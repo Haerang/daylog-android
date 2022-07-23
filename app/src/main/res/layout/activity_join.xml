@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="회원가입"
+        android:textColor="#1d1d1d"
+        android:paddingLeft="27dp"
+        android:fontFamily="@font/nanumsquare_aceb"
+        android:textSize="35dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="60dp"
+        android:paddingLeft="27dp"
+        android:text="이메일을 입력해주세요"
+        android:fontFamily="@font/nanumsquare_acb"
+        android:textColor="@color/darkgray_70"
+        android:textSize="20dp" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/join_id_input"
+            android:layout_width="356dp"
+            android:layout_height="62dp"
+            android:layout_marginBottom="50dp"
+            android:background="@drawable/input_bg"
+            android:hint="haerang@example.com"
+            android:paddingLeft="10dp"
+            android:textColorHint="@color/gray_50"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/go_pwd_btn"
+            android:layout_width="356dp"
+            android:layout_height="45dp"
+            android:background="@drawable/button"
+            android:gravity="center"
+            android:text="계속하기"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
