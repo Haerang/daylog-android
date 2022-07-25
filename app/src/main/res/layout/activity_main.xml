@@ -22,7 +22,7 @@
         android:layout_marginBottom="10dp"
         android:background="@drawable/button"
         android:gravity="center"
-        android:text="카카오톡으로 계속하기"
+        android:text="카카오톡으로 로그인"
         android:textColor="@color/white"
         android:textSize="18dp" />
 
@@ -32,7 +32,7 @@
         android:layout_height="40dp"
         android:background="@drawable/button"
         android:gravity="center"
-        android:text="이메일로 계속하기"
+        android:text="이메일로 로그인"
         android:textColor="@color/white"
         android:textSize="18dp" />
 

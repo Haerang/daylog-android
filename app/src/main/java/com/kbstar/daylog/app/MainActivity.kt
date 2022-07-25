@@ -4,20 +4,23 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import com.kbstar.daylog.app.databinding.ActivityLoginBinding
+import com.kbstar.daylog.app.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        val binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         // 로그인 화면으로 이동
-        findViewById<TextView>(R.id.login_default_btn).setOnClickListener {
+        binding.loginDefaultBtn.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
         }
 
         // 회원가입 화면으로 이동
-        findViewById<TextView>(R.id.join_btn).setOnClickListener {
-            startActivity(Intent(this, JoinActivity::class.java))
+        binding.joinBtn.setOnClickListener {
+            startActivity(Intent(this, JoinIdActivity::class.java))
         }
 
 

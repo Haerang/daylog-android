@@ -23,7 +23,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="60dp"
         android:paddingLeft="27dp"
-        android:text="이메일을 입력해주세요"
+        android:text="사용할 이메일을 입력해주세요"
         android:fontFamily="@font/nanumsquare_acb"
         android:textColor="@color/darkgray_70"
         android:textSize="20dp" />
@@ -38,12 +38,19 @@
             android:id="@+id/join_id_input"
             android:layout_width="356dp"
             android:layout_height="62dp"
-            android:layout_marginBottom="50dp"
             android:background="@drawable/input_bg"
             android:hint="haerang@example.com"
             android:paddingLeft="10dp"
             android:textColorHint="@color/gray_50"
             android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/join_id_debug"
+            android:layout_width="356dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            tools:text="debug 영역입니다"
+            android:textColor="#ff0000" />
 
         <TextView
             android:id="@+id/go_pwd_btn"

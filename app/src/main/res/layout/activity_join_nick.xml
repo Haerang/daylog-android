@@ -23,7 +23,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="60dp"
         android:paddingLeft="27dp"
-        android:text="비밀번호를 입력해주세요"
+        android:text="닉네임을 입력해주세요"
         android:fontFamily="@font/nanumsquare_acb"
         android:textColor="@color/darkgray_70"
         android:textSize="20dp" />
@@ -35,36 +35,35 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/join_pwd_input"
-            android:layout_width="356dp"
-            android:layout_height="62dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/input_bg"
-            android:hint="영문 대소문자,숫자만 입력이 가능해요"
-            android:paddingLeft="10dp"
-            android:textColorHint="@color/gray_50"
-            android:textSize="16dp" />
-
-        <EditText
-            android:id="@+id/join_pwd2_input"
+            android:id="@+id/join_nick_input"
             android:layout_width="356dp"
             android:layout_height="62dp"
             android:layout_marginBottom="50dp"
             android:background="@drawable/input_bg"
-            android:hint="비밀번호를 한번 더 입력해주세요"
+            android:hint="닉네임 입력"
             android:paddingLeft="10dp"
             android:textColorHint="@color/gray_50"
             android:textSize="16dp" />
 
         <TextView
-            android:id="@+id/go_nickname_btn"
+            android:id="@+id/join_btn"
             android:layout_width="356dp"
             android:layout_height="45dp"
             android:background="@drawable/button"
             android:gravity="center"
-            android:text="계속하기"
+            android:text="가입 완료"
             android:textColor="@color/white"
             android:textSize="20dp" />
+
+        <TextView
+            android:layout_width="356dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="회원가입시 Daylog의 서비스 이용 약관과 \n개인정보 보호정책에 동의하게 됩니다."
+            android:fontFamily="@font/nanumsquare_acb"
+            android:textColor="@color/darkgray_70"
+            android:textSize="15dp" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 

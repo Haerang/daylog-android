@@ -6,7 +6,9 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".MyApplication"
         android:allowBackup="true"
+        android:usesCleartextTraffic="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -25,11 +27,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".JoinActivity"
-            android:exported="false"/>
+        <activity
+            android:name=".JoinIdActivity"
+            android:exported="false" />
+        <activity
+            android:name=".JoinPwdActivity"
+            android:exported="false" />
         <activity
             android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".JoinNickActivity"
             android:exported="false" />
     </application>
 

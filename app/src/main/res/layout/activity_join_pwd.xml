@@ -11,10 +11,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
+        android:fontFamily="@font/nanumsquare_aceb"
+        android:paddingLeft="27dp"
         android:text="회원가입"
         android:textColor="#1d1d1d"
-        android:paddingLeft="27dp"
-        android:fontFamily="@font/nanumsquare_aceb"
         android:textSize="35dp" />
 
     <TextView
@@ -22,9 +22,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="60dp"
-        android:paddingLeft="27dp"
-        android:text="닉네임을 입력해주세요"
         android:fontFamily="@font/nanumsquare_acb"
+        android:paddingLeft="27dp"
+        android:text="비밀번호를 입력해주세요"
         android:textColor="@color/darkgray_70"
         android:textSize="20dp" />
 
@@ -35,35 +35,52 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/join_id_input"
+            android:id="@+id/join_pwd_input"
             android:layout_width="356dp"
             android:layout_height="62dp"
-            android:layout_marginBottom="50dp"
             android:background="@drawable/input_bg"
-            android:hint="영문 대소문자, 한글, 숫자만 입력이 가능해요"
+            android:hint="영문 대소문자, 숫자, 특수문자 8~15자리"
+            android:inputType="textPassword"
             android:paddingLeft="10dp"
             android:textColorHint="@color/gray_50"
             android:textSize="16dp" />
 
         <TextView
-            android:id="@+id/join_btn"
+            android:id="@+id/join_pwd_debug"
+            android:layout_width="356dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:textColor="#ff0000"
+            tools:text="debug 영역입니다" />
+
+        <EditText
+            android:id="@+id/join_pwd_check_input"
+            android:layout_width="356dp"
+            android:layout_height="62dp"
+            android:background="@drawable/input_bg"
+            android:hint="비밀번호 확인"
+            android:inputType="textPassword"
+            android:paddingLeft="10dp"
+            android:textColorHint="@color/gray_50"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/join_pwd_check_debug"
+            android:layout_width="356dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:textColor="#ff0000"
+            tools:text="debug 영역입니다" />
+
+        <TextView
+            android:id="@+id/go_nickname_btn"
             android:layout_width="356dp"
             android:layout_height="45dp"
             android:background="@drawable/button"
             android:gravity="center"
-            android:text="가입 완료"
+            android:text="계속하기"
             android:textColor="@color/white"
             android:textSize="20dp" />
-
-        <TextView
-            android:layout_width="356dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:gravity="center"
-            android:text="회원가입시 Daylog의 서비스 이용 약관과 \n개인정보 보호정책에 동의하게 됩니다."
-            android:fontFamily="@font/nanumsquare_acb"
-            android:textColor="@color/darkgray_70"
-            android:textSize="15dp" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
