@@ -62,6 +62,8 @@
             android:inputType="textPassword"
             android:paddingLeft="10dp"
             android:textColorHint="@color/gray_50"
+            android:singleLine="true"
+            android:imeOptions="actionDone"
             android:textSize="16dp" />
 
         <TextView

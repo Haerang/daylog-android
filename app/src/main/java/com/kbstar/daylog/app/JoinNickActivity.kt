@@ -1,5 +1,6 @@
 package com.kbstar.daylog.app
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -35,15 +36,15 @@ class JoinNickActivity : AppCompatActivity() {
                 if (call != null) {
                     call.enqueue(object :Callback<Member>{
                         override fun onResponse(call: Call<Member>, response: Response<Member>) {
-                            val result = response.body()!!
-                            Log.d("registerRes", result.toString())
+                            member = response.body()!!
+                            Log.d("registerRes", member.toString())
+                            startActivity(Intent(applicationContext, HomeActivity::class.java))
                         }
 
                         override fun onFailure(call: Call<Member>, t: Throwable) {
                             t.printStackTrace()
                             call.cancel()
                         }
-
                     })
                 }
             }

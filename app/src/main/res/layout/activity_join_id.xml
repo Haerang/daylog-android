@@ -11,10 +11,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
+        android:fontFamily="@font/nanumsquare_aceb"
+        android:paddingLeft="27dp"
         android:text="회원가입"
         android:textColor="#1d1d1d"
-        android:paddingLeft="27dp"
-        android:fontFamily="@font/nanumsquare_aceb"
         android:textSize="35dp" />
 
     <TextView
@@ -22,9 +22,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="60dp"
+        android:fontFamily="@font/nanumsquare_acb"
         android:paddingLeft="27dp"
         android:text="사용할 이메일을 입력해주세요"
-        android:fontFamily="@font/nanumsquare_acb"
         android:textColor="@color/darkgray_70"
         android:textSize="20dp" />
 
@@ -40,7 +40,9 @@
             android:layout_height="62dp"
             android:background="@drawable/input_bg"
             android:hint="haerang@example.com"
+            android:imeOptions="actionDone"
             android:paddingLeft="10dp"
+            android:singleLine="true"
             android:textColorHint="@color/gray_50"
             android:textSize="16dp" />
 
@@ -49,8 +51,8 @@
             android:layout_width="356dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="50dp"
-            tools:text="debug 영역입니다"
-            android:textColor="#ff0000" />
+            android:textColor="#ff0000"
+            tools:text="debug 영역입니다" />
 
         <TextView
             android:id="@+id/go_pwd_btn"

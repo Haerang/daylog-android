@@ -1,8 +1,12 @@
 package com.kbstar.daylog.app
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
@@ -25,7 +29,7 @@ class LoginActivity : AppCompatActivity() {
 
         val idReg = Regex("^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}\$")
         val memberAPI = (applicationContext as MyApplication).memberAPI
-        val member = (applicationContext as MyApplication).member
+        var member = (applicationContext as MyApplication).member
 
         binding.idInput.doAfterTextChanged {
             binding.idDebug.setText("")
@@ -53,16 +57,20 @@ class LoginActivity : AppCompatActivity() {
 
             if(!id.isNullOrBlank() && !password.isNullOrBlank()){
                 // user 객체 만들어서 server로 보내기
-                Toast.makeText(this, "로그인 버튼 눌림", Toast.LENGTH_SHORT).show()
+                // Toast.makeText(this, "로그인 버튼 눌림", Toast.LENGTH_SHORT).show()
 
                 member.id = id
                 member.password = password
 
                 memberAPI.login(member).enqueue(object : Callback<Member> {
                     override fun onResponse(call: Call<Member>, response: Response<Member>) {
-                        if (response.isSuccessful) {
-                            val member: Member = response.body()!!
-                            // 홈 화면으로 토큰 가지고 전환
+                        member = response.body()!!
+                        // TODO : id null check를 토큰 값으로 바꿀 것
+                        if(member.id == ""){
+                            Toast.makeText(applicationContext, "아이디와 비밀번호를 확인해주세요", Toast.LENGTH_SHORT).show()
+                            Log.d("login", member.toString())
+                        }else{
+                            startActivity(Intent(applicationContext, HomeActivity::class.java))
                         }
                     }
 
@@ -70,7 +78,6 @@ class LoginActivity : AppCompatActivity() {
                         t.printStackTrace()
                         call.cancel()
                     }
-
                 })
             }
         }

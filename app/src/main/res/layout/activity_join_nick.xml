@@ -11,10 +11,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
+        android:fontFamily="@font/nanumsquare_aceb"
+        android:paddingLeft="27dp"
         android:text="회원가입"
         android:textColor="#1d1d1d"
-        android:paddingLeft="27dp"
-        android:fontFamily="@font/nanumsquare_aceb"
         android:textSize="35dp" />
 
     <TextView
@@ -22,9 +22,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="60dp"
+        android:fontFamily="@font/nanumsquare_acb"
         android:paddingLeft="27dp"
         android:text="닉네임을 입력해주세요"
-        android:fontFamily="@font/nanumsquare_acb"
         android:textColor="@color/darkgray_70"
         android:textSize="20dp" />
 
@@ -41,7 +41,9 @@
             android:layout_marginBottom="50dp"
             android:background="@drawable/input_bg"
             android:hint="닉네임 입력"
+            android:imeOptions="actionDone"
             android:paddingLeft="10dp"
+            android:singleLine="true"
             android:textColorHint="@color/gray_50"
             android:textSize="16dp" />
 
@@ -59,9 +61,9 @@
             android:layout_width="356dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:fontFamily="@font/nanumsquare_acb"
             android:gravity="center"
             android:text="회원가입시 Daylog의 서비스 이용 약관과 \n개인정보 보호정책에 동의하게 됩니다."
-            android:fontFamily="@font/nanumsquare_acb"
             android:textColor="@color/darkgray_70"
             android:textSize="15dp" />
 

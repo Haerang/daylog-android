@@ -41,7 +41,9 @@
             android:layout_height="62dp"
             android:background="@drawable/input_bg"
             android:hint="이메일 주소를 입력해주세요"
+            android:imeOptions="actionDone"
             android:paddingLeft="27dp"
+            android:singleLine="true"
             android:textColorHint="@color/black"
             android:textSize="18dp" />
 
@@ -50,8 +52,8 @@
             android:layout_width="356dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            tools:text="debug 영역입니다"
-            android:textColor="#ff0000" />
+            android:textColor="#ff0000"
+            tools:text="debug 영역입니다" />
 
         <EditText
             android:id="@+id/pw_input"
@@ -59,7 +61,10 @@
             android:layout_height="62dp"
             android:background="@drawable/input_bg"
             android:hint="비밀번호를 입력해주세요"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"
             android:paddingLeft="27dp"
+            android:singleLine="true"
             android:textColorHint="@color/black"
             android:textSize="18dp" />
 
@@ -68,8 +73,8 @@
             android:layout_width="356dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="70dp"
-            tools:text="debug 영역입니다"
-            android:textColor="#ff0000" />
+            android:textColor="#ff0000"
+            tools:text="debug 영역입니다" />
 
         <TextView
             android:id="@+id/login_btn"
