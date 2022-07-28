@@ -40,6 +40,7 @@
             android:layout_height="62dp"
             android:background="@drawable/input_bg"
             android:hint="haerang@example.com"
+            android:layout_marginBottom="5dp"
             android:imeOptions="actionDone"
             android:paddingLeft="10dp"
             android:singleLine="true"
@@ -52,7 +53,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="50dp"
             android:textColor="#ff0000"
-            tools:text="debug 영역입니다" />
+            tools:text="debug 영역입니다"
+            android:paddingLeft="5dp"/>
 
         <TextView
             android:id="@+id/go_pwd_btn"

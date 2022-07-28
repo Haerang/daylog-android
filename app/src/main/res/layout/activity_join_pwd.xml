@@ -43,6 +43,7 @@
             android:inputType="textPassword"
             android:paddingLeft="10dp"
             android:textColorHint="@color/gray_50"
+            android:layout_marginBottom="5dp"
             android:textSize="16dp" />
 
         <TextView
@@ -51,6 +52,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:textColor="#ff0000"
+            android:paddingLeft="5dp"
             tools:text="debug 영역입니다" />
 
         <EditText
@@ -62,6 +64,7 @@
             android:inputType="textPassword"
             android:paddingLeft="10dp"
             android:textColorHint="@color/gray_50"
+            android:layout_marginBottom="5dp"
             android:singleLine="true"
             android:imeOptions="actionDone"
             android:textSize="16dp" />
@@ -72,7 +75,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="50dp"
             android:textColor="#ff0000"
-            tools:text="debug 영역입니다" />
+            tools:text="debug 영역입니다"
+            android:paddingLeft="5dp"/>
 
         <TextView
             android:id="@+id/go_nickname_btn"
