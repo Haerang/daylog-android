@@ -2,44 +2,54 @@ package com.kbstar.daylog.app
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.KeyEvent
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
+import com.google.android.material.tabs.TabLayout
 import com.kbstar.daylog.app.databinding.ActivityHomeBinding
 import com.kbstar.daylog.app.databinding.ActivityMainBinding
 
 class HomeActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityHomeBinding
+    lateinit var fragmentManager: FragmentManager
+    lateinit var fragments: Array<Fragment>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val webView = binding.webView
+        fragments = arrayOf(WebViewFragment(), TwoFragment(), ThreeFragment())
 
-        webView.apply {
-            webViewClient = WebViewClient()
-            settings.javaScriptEnabled = true
-            settings.setSupportZoom(true) // 화면 확대 허용
-            settings.loadWithOverviewMode = true // html 컨텐츠가 웹뷰보다 더 클 경우 스크린에 맞게 크기 조정
-            settings.useWideViewPort = true
-            settings.layoutAlgorithm = WebSettings.LayoutAlgorithm.SINGLE_COLUMN // 컨텐츠 사이즈 맞추기
-        }
+        fragmentManager = supportFragmentManager
+        val transaction: FragmentTransaction = fragmentManager.beginTransaction()
+        transaction.add(R.id.container, fragments[0])
+        transaction.commit()
 
-        webView.loadUrl("http://10.10.223.31:8080")
+        //tablayout 유저 이벤트...
+        binding.tabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                Log.d("kkang", "index:${tab?.position}")
+                val transaction: FragmentTransaction = fragmentManager.beginTransaction()
+                transaction.replace(R.id.container, fragments[tab?.position ?: 0])
+                transaction.commit()
+            }
 
-    }
+            override fun onTabReselected(tab: TabLayout.Tab?) {
 
-    override fun onBackPressed() {
-        // 웹뷰에서 뒤로가기 이벤트 처리
-        val webView = binding.webView
-        if(webView.canGoBack()){
-            webView.goBack()
-        }else{
-            super.onBackPressed()
-        }
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+
+            }
+        })
+
     }
 }

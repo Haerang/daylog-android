@@ -19,13 +19,15 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class LoginActivity : AppCompatActivity() {
+    lateinit var id : String
+    lateinit var password : String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        lateinit var id : String
-        lateinit var password : String
+
 
         val idReg = Regex("^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}\$")
         val memberAPI = (applicationContext as MyApplication).memberAPI
@@ -36,16 +38,19 @@ class LoginActivity : AppCompatActivity() {
             if(it?.matches(idReg) == false){
                 binding.idDebug.setText("이메일 주소를 올바르게 입력해주세요")
            }
-            id = it.toString()
+//            id = it.toString()
         }
 
         binding.pwInput.doAfterTextChanged {
             binding.pwDebug.setText("")
-            password = it.toString()
+//            password = it.toString()
         }
 
        binding.loginBtn.setOnClickListener{
             Log.d("login", "계속하기 클릭")
+
+           id = binding.idInput.text.toString()
+           password = binding.pwInput.text.toString()
 
             if(id.isNullOrBlank()){
                 binding.idDebug.setText("아이디를 입력해주세요")

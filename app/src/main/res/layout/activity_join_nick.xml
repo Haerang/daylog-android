@@ -5,28 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:paddingLeft="15sp"
+    android:paddingRight="15sp"
     tools:context=".MainActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="50sp"
         android:fontFamily="@font/nanumsquare_aceb"
-        android:paddingLeft="27dp"
         android:text="회원가입"
         android:textColor="#1d1d1d"
-        android:textSize="35dp" />
+        android:textSize="35sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginTop="20sp"
+        android:layout_marginBottom="60sp"
         android:fontFamily="@font/nanumsquare_acb"
-        android:paddingLeft="27dp"
         android:text="닉네임을 입력해주세요"
         android:textColor="@color/darkgray_70"
-        android:textSize="20dp" />
+        android:textSize="20sp" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -36,36 +36,36 @@
 
         <EditText
             android:id="@+id/join_nick_input"
-            android:layout_width="356dp"
-            android:layout_height="62dp"
-            android:layout_marginBottom="50dp"
+            android:layout_width="320sp"
+            android:layout_height="62sp"
+            android:layout_marginBottom="50sp"
             android:background="@drawable/input_bg"
             android:hint="닉네임 입력"
             android:imeOptions="actionDone"
-            android:paddingLeft="10dp"
+            android:paddingLeft="10sp"
             android:singleLine="true"
             android:textColorHint="@color/gray_50"
-            android:textSize="16dp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/join_btn"
-            android:layout_width="356dp"
-            android:layout_height="45dp"
+            android:layout_width="320sp"
+            android:layout_height="45sp"
             android:background="@drawable/button"
             android:gravity="center"
             android:text="가입 완료"
             android:textColor="@color/white"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
 
         <TextView
-            android:layout_width="356dp"
+            android:layout_width="320sp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="20sp"
             android:fontFamily="@font/nanumsquare_acb"
             android:gravity="center"
             android:text="회원가입시 Daylog의 서비스 이용 약관과 \n개인정보 보호정책에 동의하게 됩니다."
             android:textColor="@color/darkgray_70"
-            android:textSize="15dp" />
+            android:textSize="15sp" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
