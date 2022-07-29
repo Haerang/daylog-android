@@ -26,7 +26,7 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        fragments = arrayOf(WebViewFragment(), TwoFragment(), ThreeFragment())
+        fragments = arrayOf(WebViewFragment(), RegionFragment(), ThreeFragment())
 
         fragmentManager = supportFragmentManager
         val transaction: FragmentTransaction = fragmentManager.beginTransaction()
@@ -51,5 +51,14 @@ class HomeActivity : AppCompatActivity() {
             }
         })
 
+        regionChangeLiveData.observe(this){
+            openFragmentOnRegionFragment(it)
+        }
+    }
+
+    fun openFragmentOnRegionFragment(region: String){
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.container, CategoryFragment(region))
+        transaction.commit()
     }
 }

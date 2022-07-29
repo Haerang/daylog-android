@@ -20,4 +20,6 @@
     <color name="darkgray_20">#F2F4F6</color>
     <color name="darkgray_10">#F9FAFC</color>
 
+    <color name="red">#FF0000</color>
+
 </resources>
