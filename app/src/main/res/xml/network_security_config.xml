@@ -2,5 +2,7 @@
 <network-security-config xmlns:android="http://schemas.android.com/apk/res/android">
     <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="true">10.10.223.31</domain>
+        <domain includeSubdomains="true">daumcdn.net</domain>
+        <domain includeSubdomains="true">dapi.kakao.com</domain>
     </domain-config>
 </network-security-config>

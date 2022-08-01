@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebSettings
 import android.webkit.WebViewClient
+import androidx.activity.OnBackPressedCallback
 import com.kbstar.daylog.app.databinding.ActivityHomeBinding
 import com.kbstar.daylog.app.databinding.FragmentWebViewBinding
 
@@ -34,23 +35,16 @@ class WebViewFragment : Fragment() {
         webView.loadUrl("http://10.10.223.31:8080")
 
         // 웹뷰 뒤로가기 처리
-        fun initWebView() {
-            webView.setOnKeyListener(object : View.OnKeyListener {
-                override fun onKey(p0: View?, keyCode: Int, event: KeyEvent?): Boolean {
-                    if (event?.action != KeyEvent.ACTION_DOWN)
-                        return true
-                    if (keyCode == KeyEvent.KEYCODE_BACK) {
-                        if (webView.canGoBack()) {
-                            webView.goBack()
-                        } else {
-                            requireActivity().onBackPressed()
-                        }
-                        return true
-                    }
-                    return false
+        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (webView.canGoBack()) {
+                    webView.goBack()
+                } else {
+                    System.exit(0)
                 }
-            })
-        }
+            }
+        })
+
         return binding.root
     }
 }
