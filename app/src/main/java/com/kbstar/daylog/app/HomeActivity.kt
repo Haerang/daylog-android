@@ -10,6 +10,7 @@ import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import androidx.lifecycle.MutableLiveData
 import com.google.android.material.tabs.TabLayout
 import com.kbstar.daylog.app.databinding.ActivityHomeBinding
 import com.kbstar.daylog.app.databinding.ActivityMainBinding
@@ -19,6 +20,8 @@ class HomeActivity : AppCompatActivity() {
     lateinit var binding: ActivityHomeBinding
     lateinit var fragmentManager: FragmentManager
     lateinit var fragments: Array<Fragment>
+
+    val tabItemSelectChangeLiveData = MutableLiveData<Int>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +35,7 @@ class HomeActivity : AppCompatActivity() {
         val transaction: FragmentTransaction = fragmentManager.beginTransaction()
         transaction.add(R.id.container, fragments[0])
         transaction.commit()
+        transaction.addToBackStack(null)
 
         //tablayout 유저 이벤트...
         binding.tabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
@@ -40,6 +44,7 @@ class HomeActivity : AppCompatActivity() {
                 val transaction: FragmentTransaction = fragmentManager.beginTransaction()
                 transaction.replace(R.id.container, fragments[tab?.position ?: 0])
                 transaction.commit()
+                transaction.addToBackStack(null)
             }
 
             override fun onTabReselected(tab: TabLayout.Tab?) {
@@ -51,6 +56,10 @@ class HomeActivity : AppCompatActivity() {
             }
         })
 
+        tabItemSelectChangeLiveData.observe(this){
+            binding.tabs.getTabAt(it)?.select()
+        }
+
         regionChangeLiveData.observe(this){
             openFragmentOnRegionFragment(it)
         }
@@ -60,5 +69,6 @@ class HomeActivity : AppCompatActivity() {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.container, CategoryFragment(region))
         transaction.commit()
+        transaction.addToBackStack(null)
     }
 }

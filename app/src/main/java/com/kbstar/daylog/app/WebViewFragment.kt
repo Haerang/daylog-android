@@ -47,4 +47,9 @@ class WebViewFragment : Fragment() {
 
         return binding.root
     }
+
+    override fun onResume() {
+        super.onResume()
+        (activity as HomeActivity).tabItemSelectChangeLiveData.postValue(0)
+    }
 }

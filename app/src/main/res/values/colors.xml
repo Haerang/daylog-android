@@ -20,6 +20,9 @@
     <color name="darkgray_20">#F2F4F6</color>
     <color name="darkgray_10">#F9FAFC</color>
 
+    <color name="gradient_blue">#4b778d</color>
+    <color name="gradient_green">#8fd9a8</color>
+
     <color name="red">#FF0000</color>
 
 </resources>

@@ -34,7 +34,7 @@
         android:paddingStart="10sp"
         android:paddingEnd="10sp"
         android:textColor="@color/black"
-        android:textSize="13sp"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

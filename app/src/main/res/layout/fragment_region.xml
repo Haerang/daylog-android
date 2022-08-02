@@ -11,7 +11,7 @@
             android:layout_width="0sp"
             android:layout_marginTop="10sp"
             android:layout_height="100sp"
-            android:text="어느 지역이 궁금하세요?"
+            android:text="어느 지역으로 떠나볼까요?"
             android:paddingStart="15sp"
             android:textSize="24sp"
             android:textColor="@color/black"

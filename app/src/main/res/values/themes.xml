@@ -24,9 +24,19 @@
         <item name="android:editTextStyle">@style/customEditTextFontStyle</item>
         <item name="android:radioButtonStyle">@style/customRadioButtonFontStyle</item>
         <item name="android:checkboxStyle">@style/customCheckboxFontStyle</item>
+        <item name="appBarLayoutStyle">@style/AppbarStyle</item>
     </style>
 
     <style name="Theme.Daylogandroid.Splash">
         <item name="android:windowBackground">@drawable/splash_screen</item>
+    </style>
+
+    <style name="AppbarStyle" parent="Widget.Design.AppBarLayout">
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="ToolbarStyle" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/nanumsquare_aceb</item>
     </style>
 </resources>

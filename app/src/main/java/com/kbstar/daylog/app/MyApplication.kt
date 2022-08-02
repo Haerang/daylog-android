@@ -10,7 +10,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 class MyApplication:Application() {
     val member = Member()
     val msgRes = MsgRes()
+    val place = Place()
     var memberAPI: MemberAPI
+    var placeAPI : PlaceAPI
 
     val retrofit: Retrofit
         get(){
@@ -31,5 +33,6 @@ class MyApplication:Application() {
         }
     init{
         memberAPI = retrofit.create(MemberAPI::class.java)
+        placeAPI = retrofit.create(PlaceAPI::class.java)
     }
 }

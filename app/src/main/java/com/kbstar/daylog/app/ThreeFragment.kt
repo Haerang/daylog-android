@@ -56,4 +56,9 @@ class ThreeFragment : Fragment() {
                 }
             }
     }
+
+    override fun onResume() {
+        super.onResume()
+        (activity as HomeActivity).tabItemSelectChangeLiveData.postValue(2)
+    }
 }
