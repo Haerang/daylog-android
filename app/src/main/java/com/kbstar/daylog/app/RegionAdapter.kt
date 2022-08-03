@@ -25,8 +25,8 @@ class RegionAdapter(val context: Context?): RecyclerView.Adapter<RegionViewHolde
         context.resources?.getDrawable(R.drawable.chungcheong, null)!!,
         context.resources?.getDrawable(R.drawable.jeonra, null)!!,
         context.resources?.getDrawable(R.drawable.kyeongsang, null)!!,
-        context.resources?.getDrawable(R.drawable.jeju, null)!!,
         context.resources?.getDrawable(R.drawable.busan, null)!!,
+        context.resources?.getDrawable(R.drawable.jeju, null)!!,
         context.resources?.getDrawable(R.drawable.all, null)!!
     )
 

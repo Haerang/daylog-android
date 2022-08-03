@@ -63,11 +63,22 @@ class HomeActivity : AppCompatActivity() {
         regionChangeLiveData.observe(this){
             openFragmentOnRegionFragment(it)
         }
+
+        placeIdxChangeLiveData.observe(this){
+            openPlaceWebViewFragment(it)
+        }
     }
 
     fun openFragmentOnRegionFragment(region: String){
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.container, CategoryFragment(region))
+        transaction.commit()
+        transaction.addToBackStack(null)
+    }
+
+    fun openPlaceWebViewFragment(placeIdx: String){
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.container, PlaceWebViewFragment(placeIdx))
         transaction.commit()
         transaction.addToBackStack(null)
     }

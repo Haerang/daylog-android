@@ -24,7 +24,6 @@ class CategoryFragment(val region: String) : Fragment() {
     ): View? {
         val binding = FragmentCategoryBinding.inflate(inflater, container, false)
 
-
         setHasOptionsMenu(true)
 
         val toolbar = binding.toolbarCategoryDetail
@@ -34,6 +33,8 @@ class CategoryFragment(val region: String) : Fragment() {
             Log.d("kkang","22222222")
             activity?.supportFragmentManager?.popBackStack()
         }
+
+        totalList.clear()
 
         val placeAPI = (activity?.application as MyApplication).placeAPI
         var place = (activity?.application as MyApplication).place

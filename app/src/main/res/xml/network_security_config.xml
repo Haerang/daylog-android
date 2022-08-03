@@ -4,5 +4,6 @@
         <domain includeSubdomains="true">10.10.223.31</domain>
         <domain includeSubdomains="true">daumcdn.net</domain>
         <domain includeSubdomains="true">dapi.kakao.com</domain>
+        <domain includeSubdomains="true">code.jquery.com</domain>
     </domain-config>
 </network-security-config>

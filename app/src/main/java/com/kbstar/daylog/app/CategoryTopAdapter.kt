@@ -37,7 +37,7 @@ class CategoryTopAdapter(val context: Context?): RecyclerView.Adapter<CategoryTo
 
         binding.root.setOnClickListener{
             Log.d("kbstar.com", "categories RootClick: ${categories[position]}")
-            //나 이벤트 발생햇으니까.. 누군가가 이 이벤트에 의한 화면 조정해봐...
+            // 이벤트가 발생했으니까 이 이벤트를 감지해서 화면을 뿌리기
             categoryChangeLiveData.postValue(categories[position])
         }
     }

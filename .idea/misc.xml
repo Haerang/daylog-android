@@ -31,6 +31,7 @@
         <entry key="app/src/main/res/layout/fragment_category.xml" value="0.13333333333333333" />
         <entry key="app/src/main/res/layout/fragment_join_nickname.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_join_pwd.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/fragment_place_web_view.xml" value="0.375" />
         <entry key="app/src/main/res/layout/fragment_region.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_three.xml" value="0.11927083333333334" />
         <entry key="app/src/main/res/layout/fragment_web_view.xml" value="0.11927083333333334" />
