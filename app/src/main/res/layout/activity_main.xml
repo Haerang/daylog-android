@@ -19,18 +19,15 @@
 
     <TextView
         android:id="@+id/login_kakao_btn"
-        android:layout_width="320sp"
-        android:layout_height="40sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="10sp"
-        android:background="@drawable/button"
-        android:gravity="center"
-        android:text="카카오톡으로 로그인"
-        android:textColor="@color/white"
-        android:textSize="18sp" />
+        android:background="@drawable/kakao_login_medium_wide"
+        android:gravity="center" />
 
     <TextView
         android:id="@+id/login_default_btn"
-        android:layout_width="320sp"
+        android:layout_width="300sp"
         android:layout_height="40sp"
         android:background="@drawable/button"
         android:gravity="center"
