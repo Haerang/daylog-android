@@ -23,9 +23,23 @@
             app:title="뒤로가기" />
     </com.google.android.material.appbar.AppBarLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+    <ImageView
+        android:id="@+id/webLoadingImageView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"/>
+
     <WebView
         android:id="@+id/place_webView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+
+    </LinearLayout>
 
 </LinearLayout>

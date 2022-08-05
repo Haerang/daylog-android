@@ -6,9 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebChromeClient
 import android.webkit.WebSettings
+import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.activity.OnBackPressedCallback
+import com.bumptech.glide.Glide
 import com.kbstar.daylog.app.databinding.ActivityHomeBinding
 import com.kbstar.daylog.app.databinding.FragmentWebViewBinding
 
@@ -21,6 +24,11 @@ class WebViewFragment : Fragment() {
     ): View? {
         binding = FragmentWebViewBinding.inflate(inflater, container, false)
 
+        Glide.with(this)
+            .load(R.drawable.loading_images)
+            .override(200, 200)
+            .into(binding.webLoadingImageView)
+
         val webView = binding.webView
 
         webView.apply {
@@ -30,6 +38,15 @@ class WebViewFragment : Fragment() {
             settings.loadWithOverviewMode = true // html 컨텐츠가 웹뷰보다 더 클 경우 스크린에 맞게 크기 조정
             settings.useWideViewPort = true
             settings.layoutAlgorithm = WebSettings.LayoutAlgorithm.SINGLE_COLUMN // 컨텐츠 사이즈 맞추기
+
+            webChromeClient = object : WebChromeClient(){
+                override fun onProgressChanged(view: WebView?, newProgress: Int) {
+                    if(newProgress >= 100){
+                        binding.webLoadingImageView.visibility = View.GONE
+                        binding.webView.visibility = View.VISIBLE
+                    }
+                }
+            }
         }
 
         webView.loadUrl("http://10.10.223.31:8080")
