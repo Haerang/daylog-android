@@ -3,6 +3,7 @@ package com.kbstar.daylog.app
 import android.app.Application
 import android.content.SharedPreferences
 import android.util.Log
+import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.kakao.sdk.common.KakaoSdk
 import okhttp3.Interceptor
@@ -60,32 +61,53 @@ class MyApplication:Application() {
     var memberAPI: MemberAPI
     var placeAPI : PlaceAPI
 
-//    lateinit var prefs: SharedPreferences
-//
-//    val authInterceptor = object : Interceptor {
-//        override fun intercept(chain: Interceptor.Chain): Response {
-//            val token = prefs.getString("token", "") ?: ""
-//            Log.d("daylog","token:$token:")
-//
-//            Log.d("daylog","${chain.request().url.toString()}")
-//            val url = chain.request().url.toString()
-//            if(url.contains("login")){
-//                return chain.proceed(chain.request())
-//            }else {
-//                val request = chain.request().newBuilder()
-//                    .addHeader("Authorization", "$token")
-//                    .build()
-//                return chain.proceed(request)
-//            }
-//        }
-//    }
+    lateinit var prefs: SharedPreferences
+
+    val authInterceptor = object : Interceptor {
+        override fun intercept(chain: Interceptor.Chain): Response {
+            val member = prefs.getString("member", "") ?: ""
+            if(member.isNotEmpty()){
+                val gson = Gson()
+                Log.d("kkang", "member json:$member")
+                val memberObj = gson.fromJson<Member>(member, Member::class.java)
+                val token = memberObj.token
+
+                if(token.isEmpty()){
+                    return chain.proceed(chain.request())
+                }else {
+
+                    Log.d("daylog", "token:$token:")
+
+                    Log.d("daylog", "${chain.request().url.toString()}")
+
+                    val url = chain.request().url.toString()
+                    if(url.contains("login") || url.contains("register") || url.contains("idCheck")){
+                        return chain.proceed(chain.request())
+                    }else {
+                        val request = chain.request().newBuilder()
+                            .addHeader("Authorization", "$token")
+                            .build()
+                        return chain.proceed(request)
+                    }
+                }
+            }else {
+                return chain.proceed(chain.request())
+            }
+
+
+        }
+    }
 
 
     val retrofit: Retrofit
         get(){
             val interceptor = HttpLoggingInterceptor()
             interceptor.level = HttpLoggingInterceptor.Level.BODY
-            val client = OkHttpClient().newBuilder().addInterceptor(interceptor).build()
+
+            val httpBuilder = OkHttpClient().newBuilder()
+            httpBuilder.addInterceptor(interceptor)
+            httpBuilder.addInterceptor(authInterceptor)
+            val client = httpBuilder.build()
 
             val gson = GsonBuilder()
                 .setLenient()
@@ -108,5 +130,7 @@ class MyApplication:Application() {
     override fun onCreate() {
         super.onCreate()
         KakaoSdk.init(this, getString(R.string.kakao_app_key))
+
+        prefs = getSharedPreferences("memberPrefs", MODE_PRIVATE)
     }
 }

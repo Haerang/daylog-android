@@ -9,6 +9,7 @@ import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.ClientError
 import com.kakao.sdk.common.model.ClientErrorCause
 import com.kakao.sdk.user.UserApiClient
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -46,23 +47,23 @@ class KakaoHandlerActivity : AppCompatActivity() {
                         member.authType = "kakao"
 
                         // 회원가입 후 바로 로그인 처리
-                        memberAPI.login(member).enqueue(object : Callback<Member> {
+                        memberAPI.login(member).enqueue(object : Callback<ResponseBody> {
 
-                            override fun onResponse(call: Call<Member>, response: Response<Member>) {
-                                val member = response.body()!!
+                            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                                val json = response.body()?.string()!!
 
-                                if(token == null){
+                                if(json == null){
                                     Toast.makeText(applicationContext, "아이디와 비밀번호를 확인해주세요", Toast.LENGTH_SHORT).show()
-                                    Log.d("login", member.toString())
+                                    Log.d("login", json)
                                 }else{
-//                                            val editor = (applicationContext as MyApplication).prefs.edit()
-//                                            editor.putString("token", token.toString())
-//                                            editor.commit()
+                                    val editor = (applicationContext as MyApplication).prefs.edit()
+                                    editor.putString("member", json)
+                                    editor.commit()
                                     startActivity(Intent(applicationContext, HomeActivity::class.java))
                                 }
                             }
 
-                            override fun onFailure(call: Call<Member>, t: Throwable) {
+                            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                                 t.printStackTrace()
                                 call.cancel()
                             }
@@ -107,22 +108,22 @@ class KakaoHandlerActivity : AppCompatActivity() {
                             member.authType = "kakao"
 
                             // 회원가입 후 바로 로그인 처리
-                            memberAPI.login(member).enqueue(object : Callback<Member> {
-                                override fun onResponse(call: Call<Member>, response: Response<Member>) {
-                                    val token = response.body()!!
+                            memberAPI.login(member).enqueue(object : Callback<ResponseBody> {
+                                override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                                    val json = response.body()?.string()!!
 
-                                    if(token == null){
+                                    if(json == null){
                                         Toast.makeText(applicationContext, "아이디와 비밀번호를 확인해주세요", Toast.LENGTH_SHORT).show()
-                                        Log.d("login", member.toString())
+                                        Log.d("login", json)
                                     }else{
-//                                                val editor = (applicationContext as MyApplication).prefs.edit()
-//                                                editor.putString("token", token.toString())
-//                                                editor.commit()
+                                        val editor = (applicationContext as MyApplication).prefs.edit()
+                                        editor.putString("member", json)
+                                        editor.commit()
                                         startActivity(Intent(applicationContext, HomeActivity::class.java))
                                     }
                                 }
 
-                                override fun onFailure(call: Call<Member>, t: Throwable) {
+                                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                                     t.printStackTrace()
                                     call.cancel()
                                 }

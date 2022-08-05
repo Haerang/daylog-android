@@ -12,6 +12,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.widget.doAfterTextChanged
 import com.kbstar.daylog.app.databinding.ActivityLoginBinding
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -67,23 +68,26 @@ class LoginActivity : AppCompatActivity() {
                 member.id = id
                 member.password = password
 
-                memberAPI.login(member).enqueue(object : Callback<Member> {
-                    override fun onResponse(call: Call<Member>, response: Response<Member>) {
-                        //member = response.body()!!
-                        val token = response.body()!!
+                memberAPI.login(member).enqueue(object : Callback<ResponseBody> {
+                    override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                        val json =  response.body()?.string()!!
 
-                        if(token == null){
+                        Log.d("kkang","login:json:"+json)
+
+                        // val token = response.body()!!
+                        Log.d("login", json)
+                        if(json == null){
                             Toast.makeText(applicationContext, "아이디와 비밀번호를 확인해주세요", Toast.LENGTH_SHORT).show()
-                            Log.d("login", member.toString())
+
                         }else{
-//                            val editor = (applicationContext as MyApplication).prefs.edit()
-//                            editor.putString("token", token.toString())
-//                            editor.commit()
+                            val editor = (applicationContext as MyApplication).prefs.edit()
+                            editor.putString("member", json)
+                            editor.commit()
                             startActivity(Intent(applicationContext, HomeActivity::class.java))
                         }
                     }
 
-                    override fun onFailure(call: Call<Member>, t: Throwable) {
+                    override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                         t.printStackTrace()
                         call.cancel()
                     }

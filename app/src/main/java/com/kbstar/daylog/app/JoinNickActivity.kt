@@ -38,7 +38,7 @@ class JoinNickActivity : AppCompatActivity() {
                         override fun onResponse(call: Call<Member>, response: Response<Member>) {
                             member = response.body()!!
                             Log.d("registerRes", member.toString())
-                            startActivity(Intent(applicationContext, HomeActivity::class.java))
+                            startActivity(Intent(applicationContext, MainActivity::class.java))
                         }
 
                         override fun onFailure(call: Call<Member>, t: Throwable) {

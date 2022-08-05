@@ -1,5 +1,6 @@
 package com.kbstar.daylog.app
 
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.POST
@@ -14,5 +15,5 @@ interface MemberAPI {
     @POST("user/login")
     fun login(
         @Body params: Member
-    ): Call<Member>
+    ): Call<ResponseBody>
 }
