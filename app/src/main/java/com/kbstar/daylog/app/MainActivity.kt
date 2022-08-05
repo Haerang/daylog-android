@@ -23,6 +23,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, JoinIdActivity::class.java))
         }
 
+        // 카카오 로그인 handler 화면으로 이동
+        binding.loginKakaoBtn.setOnClickListener {
+            startActivity(Intent(this, KakaoHandlerActivity::class.java))
+        }
+
 
     }
 }

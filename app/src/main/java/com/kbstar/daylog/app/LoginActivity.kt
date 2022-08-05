@@ -69,12 +69,16 @@ class LoginActivity : AppCompatActivity() {
 
                 memberAPI.login(member).enqueue(object : Callback<Member> {
                     override fun onResponse(call: Call<Member>, response: Response<Member>) {
-                        member = response.body()!!
-                        // TODO : id null check를 토큰 값으로 바꿀 것
-                        if(member.id == ""){
+                        //member = response.body()!!
+                        val token = response.body()!!
+
+                        if(token == null){
                             Toast.makeText(applicationContext, "아이디와 비밀번호를 확인해주세요", Toast.LENGTH_SHORT).show()
                             Log.d("login", member.toString())
                         }else{
+//                            val editor = (applicationContext as MyApplication).prefs.edit()
+//                            editor.putString("token", token.toString())
+//                            editor.commit()
                             startActivity(Intent(applicationContext, HomeActivity::class.java))
                         }
                     }

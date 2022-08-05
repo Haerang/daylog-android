@@ -20,8 +20,10 @@
         <entry key="app/src/main/res/layout/activity_join_id.xml" value="0.25901639344262295" />
         <entry key="app/src/main/res/layout/activity_join_nick.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/activity_join_pwd.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_kakao_handler.xml" value="0.27794871794871795" />
+        <entry key="app/src/main/res/layout/activity_kakao_web_view.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.21428571428571427" />
         <entry key="app/src/main/res/layout/activity_posting_detail.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/category_item.xml" value="0.2657407407407407" />
         <entry key="app/src/main/res/layout/category_item_top.xml" value="0.125" />
