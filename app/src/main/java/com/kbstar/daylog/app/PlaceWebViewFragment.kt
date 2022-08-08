@@ -6,15 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.webkit.WebChromeClient
-import android.webkit.WebSettings
-import android.webkit.WebView
-import android.webkit.WebViewClient
+import android.webkit.*
 import androidx.activity.OnBackPressedCallback
 import com.bumptech.glide.Glide
 import com.kbstar.daylog.app.databinding.FragmentPlaceWebViewBinding
 
 class PlaceWebViewFragment(val placeIdx: String) : Fragment() {
+
     lateinit var binding : FragmentPlaceWebViewBinding
 
     override fun onCreateView(
@@ -22,6 +20,19 @@ class PlaceWebViewFragment(val placeIdx: String) : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentPlaceWebViewBinding.inflate(inflater, container, false)
+        val pref = (activity as HomeActivity).pref
+
+        class MemberData{
+            @get:JavascriptInterface
+            val member: String?
+                get(){
+                    val member: String? = pref.getString("member","")
+                    if (member != null) {
+                        Log.d("javascript", member)
+                    }
+                    return member
+                }
+        }
 
         Glide.with(this)
             .load(R.drawable.loading_images)
@@ -56,7 +67,10 @@ class PlaceWebViewFragment(val placeIdx: String) : Fragment() {
             }
         }
 
-        placeWebView.loadUrl("http://10.10.223.31:8080/place?idx=$placeIdx")
+        placeWebView.run {
+            addJavascriptInterface(MemberData(), "android")
+            loadUrl("http://10.10.223.31:8080/place?idx=$placeIdx")
+        }
 
         // 웹뷰 뒤로가기 처리
         activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
@@ -71,5 +85,4 @@ class PlaceWebViewFragment(val placeIdx: String) : Fragment() {
 
         return binding.root
     }
-
 }

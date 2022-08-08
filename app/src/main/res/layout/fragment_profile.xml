@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileFragment">
+
+    <LinearLayout
+        android:id="@+id/profile_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/profile_thumbnail"
+            android:layout_width="70sp"
+            android:layout_height="70sp"
+            android:layout_marginStart="20sp"
+            android:layout_marginTop="16sp"
+            android:layout_marginBottom="16sp"
+            android:layout_marginEnd="20sp"
+            android:scaleType="centerCrop"
+            app:shapeAppearanceOverlay="@style/Circle" />
+
+        <TextView
+            android:id="@+id/profile_nickname"
+            android:layout_width="match_parent"
+            android:layout_marginStart="16sp"
+            android:layout_marginTop="16sp"
+            android:layout_marginEnd="16sp"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:fontFamily="@font/nanumsquare_acb"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/favorite_recyclerview"
+        android:layout_width="0sp"
+        android:layout_height="0sp"
+        android:paddingTop="25sp"
+        android:paddingStart="10sp"
+        android:paddingEnd="10sp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_constraintTop_toBottomOf="@id/profile_layout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:spanCount="3"
+        tools:listitem="@layout/favorite_item" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

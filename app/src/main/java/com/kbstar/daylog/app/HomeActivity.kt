@@ -1,9 +1,11 @@
 package com.kbstar.daylog.app
 
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.KeyEvent
+import android.webkit.JavascriptInterface
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
@@ -14,22 +16,26 @@ import androidx.lifecycle.MutableLiveData
 import com.google.android.material.tabs.TabLayout
 import com.kbstar.daylog.app.databinding.ActivityHomeBinding
 import com.kbstar.daylog.app.databinding.ActivityMainBinding
+import java.util.prefs.Preferences
 
 class HomeActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityHomeBinding
     lateinit var fragmentManager: FragmentManager
     lateinit var fragments: Array<Fragment>
+    lateinit var pref: SharedPreferences
 
     val tabItemSelectChangeLiveData = MutableLiveData<Int>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        fragments = arrayOf(WebViewFragment(), RegionFragment(), ThreeFragment())
+        pref = (applicationContext as MyApplication).prefs
+        //Log.d("pref", pref.getString("member", "")!!)
+
+        fragments = arrayOf(WebViewFragment(), RegionFragment(), ProfileFragment())
 
         fragmentManager = supportFragmentManager
         val transaction: FragmentTransaction = fragmentManager.beginTransaction()

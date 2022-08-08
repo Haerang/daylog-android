@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.core.widget.doAfterTextChanged
 import com.kbstar.daylog.app.databinding.ActivityLoginBinding
 import okhttp3.ResponseBody
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -27,8 +28,6 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
 
         val idReg = Regex("^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}\$")
         val memberAPI = (applicationContext as MyApplication).memberAPI
