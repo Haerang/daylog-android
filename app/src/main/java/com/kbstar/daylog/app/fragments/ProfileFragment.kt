@@ -57,6 +57,7 @@ class ProfileFragment(val id: String) : Fragment() {
 
         viewmodel.favoriteLiveData.observe(viewLifecycleOwner) {
             if (it.size > 0) {
+                placeList.clear()
                 placeList.addAll(it)
                 favoriteAdapter.notifyDataSetChanged()
             } else {
