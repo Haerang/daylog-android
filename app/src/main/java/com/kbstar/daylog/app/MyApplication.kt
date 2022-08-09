@@ -7,10 +7,10 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.kakao.sdk.common.KakaoSdk
 import com.kbstar.daylog.app.apiservice.PlaceAPI
-import com.kbstar.daylog.app.fragments.MemberAPI
+import com.kbstar.daylog.app.apiservice.MemberAPI
 import com.kbstar.daylog.app.model.Member
-import com.kbstar.daylog.app.repository.MsgRes
-import com.kbstar.daylog.app.repository.Place
+import com.kbstar.daylog.app.model.MsgRes
+import com.kbstar.daylog.app.model.Place
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response

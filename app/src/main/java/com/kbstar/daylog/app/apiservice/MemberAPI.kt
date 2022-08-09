@@ -1,7 +1,7 @@
-package com.kbstar.daylog.app.fragments
+package com.kbstar.daylog.app.apiservice
 
 import com.kbstar.daylog.app.model.Member
-import com.kbstar.daylog.app.repository.MsgRes
+import com.kbstar.daylog.app.model.MsgRes
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.Body
@@ -9,7 +9,7 @@ import retrofit2.http.POST
 
 interface MemberAPI {
     @POST("user/register")
-    fun register(@Body member: Member): Call<Member>
+    fun register(@Body member: Member?): Call<Member>
 
     @POST("user/idCheck")
     fun idCheck(@Body member: Member): Call<MsgRes>

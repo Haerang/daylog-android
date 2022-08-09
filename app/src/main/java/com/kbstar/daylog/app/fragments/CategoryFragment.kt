@@ -13,7 +13,7 @@ import com.kbstar.daylog.app.adapters.CategoryTopAdapter
 import com.kbstar.daylog.app.adapters.categoryChangeLiveData
 
 import com.kbstar.daylog.app.databinding.FragmentCategoryBinding
-import com.kbstar.daylog.app.repository.Place
+import com.kbstar.daylog.app.model.Place
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

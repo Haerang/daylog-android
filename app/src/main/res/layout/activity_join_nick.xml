@@ -64,7 +64,7 @@
             android:fontFamily="@font/nanumsquare_acb"
             android:gravity="center"
             android:text="회원가입시 Daylog의 서비스 이용 약관과 \n개인정보 보호정책에 동의하게 됩니다."
-            android:textColor="@color/darkgray_70"
+            android:textColor="@color/gray_80"
             android:textSize="15sp" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>

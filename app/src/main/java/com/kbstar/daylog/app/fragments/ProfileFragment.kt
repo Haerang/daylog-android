@@ -11,7 +11,7 @@ import com.kbstar.daylog.app.HomeActivity
 import com.kbstar.daylog.app.MyApplication
 import com.kbstar.daylog.app.adapters.FavoriteAdapter
 import com.kbstar.daylog.app.databinding.FragmentProfileBinding
-import com.kbstar.daylog.app.repository.Place
+import com.kbstar.daylog.app.model.Place
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

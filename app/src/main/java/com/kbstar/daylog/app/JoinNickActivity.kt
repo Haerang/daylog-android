@@ -4,14 +4,17 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
+import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.core.widget.doAfterTextChanged
 import com.kbstar.daylog.app.databinding.ActivityJoinNickBinding
 import com.kbstar.daylog.app.model.Member
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.kbstar.daylog.app.viewmodel.JoinViewModel
 
 class JoinNickActivity : AppCompatActivity() {
+    val viewmodel by viewModels<JoinViewModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityJoinNickBinding.inflate(layoutInflater)
@@ -29,25 +32,16 @@ class JoinNickActivity : AppCompatActivity() {
                 member?.nickname = nickname
                 // 멤버 객체 확인
                 Log.d("register", member.toString());
+                    viewmodel.register(member)
+            }
+        }
 
-                // retrofit 통신
-                val memberAPI = (applicationContext as MyApplication).memberAPI
-                val call = member?.let { it1 -> memberAPI.register(it1) }
-
-                if (call != null) {
-                    call.enqueue(object :Callback<Member>{
-                        override fun onResponse(call: Call<Member>, response: Response<Member>) {
-                            member = response.body()!!
-                            Log.d("registerRes", member.toString())
-                            startActivity(Intent(applicationContext, MainActivity::class.java))
-                        }
-
-                        override fun onFailure(call: Call<Member>, t: Throwable) {
-                            t.printStackTrace()
-                            call.cancel()
-                        }
-                    })
-                }
+        viewmodel.joinLiveData.observe(this){
+            if(it == "success"){
+                startActivity(Intent(applicationContext, MainActivity::class.java))
+                Toast.makeText(applicationContext, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show()
+            }else {
+                Toast.makeText(applicationContext, "회원가입에 실패하였습니다.", Toast.LENGTH_SHORT).show()
             }
         }
     }
