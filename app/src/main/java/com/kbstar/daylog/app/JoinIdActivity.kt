@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.widget.doAfterTextChanged
 import com.kbstar.daylog.app.databinding.ActivityJoinIdBinding
+import com.kbstar.daylog.app.repository.MsgRes
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

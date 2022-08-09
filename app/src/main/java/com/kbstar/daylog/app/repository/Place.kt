@@ -1,4 +1,4 @@
-package com.kbstar.daylog.app
+package com.kbstar.daylog.app.repository
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

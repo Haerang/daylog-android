@@ -6,5 +6,6 @@
         <domain includeSubdomains="true">daumcdn.net</domain>
         <domain includeSubdomains="true">dapi.kakao.com</domain>
         <domain includeSubdomains="true">code.jquery.com</domain>
+        <domain includeSubdomains="true">map.kakao.com</domain>
     </domain-config>
 </network-security-config>

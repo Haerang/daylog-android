@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.widget.doAfterTextChanged
 import com.kbstar.daylog.app.databinding.ActivityJoinPwdBinding
+import com.kbstar.daylog.app.model.Member
 
 class JoinPwdActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

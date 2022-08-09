@@ -1,5 +1,7 @@
-package com.kbstar.daylog.app
+package com.kbstar.daylog.app.apiservice
 
+import com.kbstar.daylog.app.model.Member
+import com.kbstar.daylog.app.repository.Place
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.POST

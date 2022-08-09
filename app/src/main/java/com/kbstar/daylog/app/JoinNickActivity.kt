@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.core.widget.doAfterTextChanged
 import com.kbstar.daylog.app.databinding.ActivityJoinNickBinding
+import com.kbstar.daylog.app.model.Member
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

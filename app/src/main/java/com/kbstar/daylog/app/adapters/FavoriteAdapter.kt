@@ -1,4 +1,4 @@
-package com.kbstar.daylog.app
+package com.kbstar.daylog.app.adapters
 
 import android.content.Context
 import android.util.Log
@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.kbstar.daylog.app.databinding.FavoriteItemBinding
+import com.kbstar.daylog.app.repository.Place
 
 class FavoriteViewHolder(val binding: FavoriteItemBinding) : RecyclerView.ViewHolder(binding.root)
 

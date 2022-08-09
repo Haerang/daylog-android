@@ -2,11 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:URI="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.kbstar.daylog.app">
+    package="com.kbstar.daylog.app"
+    tools:ignore="CoarseFineLocation">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"
+        tools:ignore="CoarseFineLocation" />
 
+    <meta-data android:name="com.kakao.sdk.AppKey" android:value="BVSkEBfBFDafAx4luUUATdbx91Q="/>
 
     <application
         android:name=".MyApplication"

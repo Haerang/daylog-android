@@ -10,8 +10,10 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.core.widget.doAfterTextChanged
 import com.kbstar.daylog.app.databinding.ActivityLoginBinding
+import com.kbstar.daylog.app.viewmodel.LoginViewModel
 import okhttp3.ResponseBody
 import org.json.JSONObject
 import retrofit2.Call
@@ -24,13 +26,15 @@ class LoginActivity : AppCompatActivity() {
     lateinit var id : String
     lateinit var password : String
 
+    val viewmodel by viewModels<LoginViewModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val idReg = Regex("^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}\$")
-        val memberAPI = (applicationContext as MyApplication).memberAPI
+//        val memberAPI = (applicationContext as MyApplication).memberAPI
         var member = (applicationContext as MyApplication).member
 
         binding.idInput.doAfterTextChanged {
@@ -67,32 +71,44 @@ class LoginActivity : AppCompatActivity() {
                 member.id = id
                 member.password = password
 
-                memberAPI.login(member).enqueue(object : Callback<ResponseBody> {
-                    override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                        val json =  response.body()?.string()!!
+                viewmodel.login(member)
 
-                        Log.d("kkang","login:json:"+json)
-
-                        // val token = response.body()!!
-                        Log.d("login", json)
-                        if(json == null){
-                            Toast.makeText(applicationContext, "아이디와 비밀번호를 확인해주세요", Toast.LENGTH_SHORT).show()
-
-                        }else{
-                            val editor = (applicationContext as MyApplication).prefs.edit()
-                            editor.putString("member", json)
-                            editor.putString("id", id)
-                            editor.commit()
-                            startActivity(Intent(applicationContext, HomeActivity::class.java))
-                        }
-                    }
-
-                    override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                        t.printStackTrace()
-                        call.cancel()
-                    }
-                })
+//                memberAPI.login(member).enqueue(object : Callback<ResponseBody> {
+//                    override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+//                        val json =  response.body()?.string()!!
+//
+//                        Log.d("kkang","login:json:"+json)
+//
+//                        // val token = response.body()!!
+//                        Log.d("login", json)
+//                        if(json == null){
+//                            Toast.makeText(applicationContext, "아이디와 비밀번호를 확인해주세요", Toast.LENGTH_SHORT).show()
+//
+//                        }else{
+//                            val editor = (applicationContext as MyApplication).prefs.edit()
+//                            editor.putString("member", json)
+//                            editor.putString("id", id)
+//                            editor.commit()
+//                            startActivity(Intent(applicationContext, HomeActivity::class.java))
+//                        }
+//                    }
+//
+//                    override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+//                        t.printStackTrace()
+//                        call.cancel()
+//                    }
+//                })
             }
         }
+
+        viewmodel.loginLiveData.observe(this){
+            if(it == "success"){
+                startActivity(Intent(applicationContext, HomeActivity::class.java))
+            }else {
+                Toast.makeText(applicationContext, "아이디와 비밀번호를 확인해주세요", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+
     }
 }

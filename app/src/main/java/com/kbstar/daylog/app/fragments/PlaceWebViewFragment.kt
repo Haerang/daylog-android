@@ -1,5 +1,7 @@
-package com.kbstar.daylog.app
+package com.kbstar.daylog.app.fragments
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -9,7 +11,10 @@ import android.view.ViewGroup
 import android.webkit.*
 import androidx.activity.OnBackPressedCallback
 import com.bumptech.glide.Glide
+import com.kbstar.daylog.app.HomeActivity
+import com.kbstar.daylog.app.R
 import com.kbstar.daylog.app.databinding.FragmentPlaceWebViewBinding
+import java.net.URISyntaxException
 
 class PlaceWebViewFragment(val placeIdx: String) : Fragment() {
 
@@ -65,6 +70,49 @@ class PlaceWebViewFragment(val placeIdx: String) : Fragment() {
                     }
                 }
             }
+
+            webViewClient = object : WebViewClient(){
+                override fun shouldOverrideUrlLoading(
+                    view: WebView?,
+                    url: String?
+                ): Boolean {
+                    if(url?.indexOf("tel:")!! > -1){
+                        startActivity(Intent(Intent.ACTION_DIAL, Uri.parse(url)))
+                        return true;
+                    }else if (url != null && url.startsWith("intent://")) {
+                        try {
+                            val intent = Intent.parseUri(url, Intent.URI_INTENT_SCHEME)
+                            val existPackage =
+                                context.getPackageManager().getLaunchIntentForPackage(intent.getPackage()!!)
+                            if (existPackage != null) {
+                                startActivity(intent)
+                            } else {
+                                val marketIntent = Intent(Intent.ACTION_VIEW)
+                                marketIntent.data =
+                                    Uri.parse("market://details?id=" + intent.getPackage()!!)
+                                startActivity(marketIntent)
+                            }
+                            return true
+                        } catch (e: Exception) {
+                            e.printStackTrace()
+                        }
+                    } else if (url != null && url.startsWith("kakaomap://")) {
+                        try {
+                            val intent = Intent.parseUri(url, Intent.URI_INTENT_SCHEME)
+                            if (intent != null) {
+                                startActivity(intent)
+                            }
+                            return true
+                        } catch (e: URISyntaxException) {
+                            e.printStackTrace()
+                        }
+                    } else{
+                        return false;
+                    }
+                    return true;
+                }
+            }
+
         }
 
         placeWebView.run {

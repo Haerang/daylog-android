@@ -1,6 +1,5 @@
-package com.kbstar.daylog.app
+package com.kbstar.daylog.app.fragments
 
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,12 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
-import com.kakao.sdk.common.model.ApplicationContextInfo
+import com.kbstar.daylog.app.HomeActivity
+import com.kbstar.daylog.app.MyApplication
+import com.kbstar.daylog.app.adapters.FavoriteAdapter
 import com.kbstar.daylog.app.databinding.FragmentProfileBinding
+import com.kbstar.daylog.app.repository.Place
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.net.URLConnection
 
 class ProfileFragment(val id: String) : Fragment() {
 

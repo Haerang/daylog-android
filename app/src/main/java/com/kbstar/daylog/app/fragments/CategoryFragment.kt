@@ -1,4 +1,4 @@
-package com.kbstar.daylog.app
+package com.kbstar.daylog.app.fragments
 
 import android.os.Bundle
 import android.util.Log
@@ -6,8 +6,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.FragmentManager
+
+import com.kbstar.daylog.app.MyApplication
+import com.kbstar.daylog.app.adapters.CategoryAdapter
+import com.kbstar.daylog.app.adapters.CategoryTopAdapter
+import com.kbstar.daylog.app.adapters.categoryChangeLiveData
+
 import com.kbstar.daylog.app.databinding.FragmentCategoryBinding
+import com.kbstar.daylog.app.repository.Place
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

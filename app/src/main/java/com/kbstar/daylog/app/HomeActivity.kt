@@ -4,19 +4,17 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.KeyEvent
-import android.webkit.JavascriptInterface
-import android.webkit.WebSettings
-import android.webkit.WebView
-import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.MutableLiveData
 import com.google.android.material.tabs.TabLayout
+import com.kbstar.daylog.app.adapters.favoriteIdxChangeLiveData
+import com.kbstar.daylog.app.adapters.placeIdxChangeLiveData
+import com.kbstar.daylog.app.adapters.regionChangeLiveData
 import com.kbstar.daylog.app.databinding.ActivityHomeBinding
-import com.kbstar.daylog.app.databinding.ActivityMainBinding
-import java.util.prefs.Preferences
+import com.kbstar.daylog.app.fragments.*
+import com.kbstar.daylog.app.model.Member
 
 class HomeActivity : AppCompatActivity() {
 

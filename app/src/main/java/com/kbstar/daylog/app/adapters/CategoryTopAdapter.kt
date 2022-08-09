@@ -1,4 +1,4 @@
-package com.kbstar.daylog.app
+package com.kbstar.daylog.app.adapters
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
+import com.kbstar.daylog.app.R
 import com.kbstar.daylog.app.databinding.CategoryTopItemBinding
 
 class CategoryTopViewHolder(val binding: CategoryTopItemBinding) : RecyclerView.ViewHolder(binding.root)
