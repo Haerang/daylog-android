@@ -24,6 +24,7 @@ class HomeActivity : AppCompatActivity() {
     lateinit var fragmentManager: FragmentManager
     lateinit var fragments: Array<Fragment>
     lateinit var pref: SharedPreferences
+    lateinit var member: Member
 
     val tabItemSelectChangeLiveData = MutableLiveData<Int>()
 
@@ -34,8 +35,10 @@ class HomeActivity : AppCompatActivity() {
 
         pref = (applicationContext as MyApplication).prefs
         //Log.d("pref", pref.getString("member", "")!!)
+        member = (applicationContext as MyApplication).member
+        member.id = pref.getString("id", "").toString()
 
-        fragments = arrayOf(WebViewFragment(), RegionFragment(), ProfileFragment())
+        fragments = arrayOf(WebViewFragment(), RegionFragment(), ProfileFragment(member.id))
 
         fragmentManager = supportFragmentManager
         val transaction: FragmentTransaction = fragmentManager.beginTransaction()
@@ -73,6 +76,10 @@ class HomeActivity : AppCompatActivity() {
         placeIdxChangeLiveData.observe(this){
             openPlaceWebViewFragment(it)
         }
+
+        favoriteIdxChangeLiveData.observe(this){
+            openPlaceWebViewFragment(it)
+        }
     }
 
     fun openFragmentOnRegionFragment(region: String){
@@ -88,4 +95,12 @@ class HomeActivity : AppCompatActivity() {
         transaction.commit()
         transaction.addToBackStack(null)
     }
+
+    fun openProfileFragment(memberId: String){
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.container, ProfileFragment(memberId))
+        transaction.commit()
+        transaction.addToBackStack(null)
+    }
+
 }

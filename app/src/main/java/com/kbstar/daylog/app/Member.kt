@@ -10,5 +10,6 @@ data class Member (
     var password: String = "",
     var nickname: String = "",
     var authType: String = "",
-    val token: String = ""
+    var token: String = "",
+    var thumbnail: String = ""
 ) : Parcelable

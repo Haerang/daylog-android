@@ -44,6 +44,7 @@ class KakaoHandlerActivity : AppCompatActivity() {
                         // 사용자 정보를 가져와서 member 객체를 통해 retrofit 통신
                         member.id = user.kakaoAccount?.email.toString()
                         member.nickname = user.kakaoAccount?.profile?.nickname.toString()
+                        member.thumbnail = user.kakaoAccount?.profile?.thumbnailImageUrl.toString()
                         member.authType = "kakao"
 
                         // 회원가입 후 바로 로그인 처리
@@ -58,6 +59,9 @@ class KakaoHandlerActivity : AppCompatActivity() {
                                 }else{
                                     val editor = (applicationContext as MyApplication).prefs.edit()
                                     editor.putString("member", json)
+                                    editor.putString("id", member.id)
+                                    editor.putString("nickname", member.nickname)
+                                    editor.putString("profileImg", member.thumbnail)
                                     editor.commit()
                                     startActivity(Intent(applicationContext, HomeActivity::class.java))
                                 }
@@ -105,6 +109,7 @@ class KakaoHandlerActivity : AppCompatActivity() {
                             // 사용자 정보를 가져와서 member 객체를 통해 retrofit 통신
                             member.id = user.kakaoAccount?.email.toString()
                             member.nickname = user.kakaoAccount?.profile?.nickname.toString()
+                            member.thumbnail = user.kakaoAccount?.profile?.thumbnailImageUrl.toString()
                             member.authType = "kakao"
 
                             // 회원가입 후 바로 로그인 처리
@@ -118,6 +123,9 @@ class KakaoHandlerActivity : AppCompatActivity() {
                                     }else{
                                         val editor = (applicationContext as MyApplication).prefs.edit()
                                         editor.putString("member", json)
+                                        editor.putString("id", member.id)
+                                        editor.putString("nickname", member.nickname)
+                                        editor.putString("profileImg", member.thumbnail)
                                         editor.commit()
                                         startActivity(Intent(applicationContext, HomeActivity::class.java))
                                     }

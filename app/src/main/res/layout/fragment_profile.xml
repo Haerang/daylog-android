@@ -6,12 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".ProfileFragment">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/profile_appbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/profile_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:contentInsetStartWithNavigation="0dp"
+            app:layout_scrollFlags="scroll|enterAlways"
+            android:theme="@style/ToolbarStyle"
+            app:titleTextAppearance="@font/nanumsquare_acr"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
     <LinearLayout
         android:id="@+id/profile_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="10sp"
+        app:layout_constraintTop_toBottomOf="@id/profile_appbar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -22,20 +42,21 @@
             android:layout_marginStart="20sp"
             android:layout_marginTop="16sp"
             android:layout_marginBottom="16sp"
-            android:layout_marginEnd="20sp"
+            android:layout_marginEnd="10sp"
             android:scaleType="centerCrop"
+            android:src="@drawable/profile"
             app:shapeAppearanceOverlay="@style/Circle" />
 
-        <TextView
-            android:id="@+id/profile_nickname"
-            android:layout_width="match_parent"
-            android:layout_marginStart="16sp"
-            android:layout_marginTop="16sp"
-            android:layout_marginEnd="16sp"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:fontFamily="@font/nanumsquare_acb"
-            android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/profile_textview"
+                android:layout_width="match_parent"
+                android:layout_marginStart="10sp"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:text="좋아하는 공간을 보여드려요"
+                android:fontFamily="@font/nanumsquare_acb"
+                android:layout_height="wrap_content" />
 
     </LinearLayout>
 

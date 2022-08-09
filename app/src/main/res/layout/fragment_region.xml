@@ -15,7 +15,7 @@
             android:paddingStart="15sp"
             android:textSize="24sp"
             android:textColor="@color/black"
-            android:fontFamily="@font/nanumsquare_aceb"
+            android:fontFamily="@font/nanumsquare_acb"
             android:gravity="center_vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

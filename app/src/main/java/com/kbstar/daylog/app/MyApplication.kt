@@ -65,11 +65,11 @@ class MyApplication:Application() {
 
     val authInterceptor = object : Interceptor {
         override fun intercept(chain: Interceptor.Chain): Response {
-            val member = prefs.getString("member", "") ?: ""
-            if(member.isNotEmpty()){
+            val user = prefs.getString("member", "") ?: ""
+            if(user.isNotEmpty()){
                 val gson = Gson()
-                Log.d("kkang", "member json:$member")
-                val memberObj = gson.fromJson<Member>(member, Member::class.java)
+                Log.d("kkang", "member json:$user")
+                val memberObj = gson.fromJson<Member>(user, Member::class.java)
                 val token = memberObj.token
 
                 if(token.isEmpty()){
@@ -93,7 +93,6 @@ class MyApplication:Application() {
             }else {
                 return chain.proceed(chain.request())
             }
-
 
         }
     }

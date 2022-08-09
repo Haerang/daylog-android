@@ -81,6 +81,7 @@ class LoginActivity : AppCompatActivity() {
                         }else{
                             val editor = (applicationContext as MyApplication).prefs.edit()
                             editor.putString("member", json)
+                            editor.putString("id", id)
                             editor.commit()
                             startActivity(Intent(applicationContext, HomeActivity::class.java))
                         }
