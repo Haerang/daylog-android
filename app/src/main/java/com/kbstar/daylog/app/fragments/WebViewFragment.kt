@@ -30,7 +30,7 @@ class WebViewFragment : Fragment() {
             @get:JavascriptInterface
             val member: String?
                 get() {
-                    val member: String? = pref.getString("member", "")
+                    val member: String? = pref.getString("nickname", "")
                     if (member != null) {
                         Log.d("javascript", member)
                     }

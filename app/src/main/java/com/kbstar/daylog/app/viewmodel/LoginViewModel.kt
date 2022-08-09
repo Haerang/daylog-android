@@ -8,6 +8,7 @@ import com.kbstar.daylog.app.model.Member
 import com.kbstar.daylog.app.MyApplication
 import com.kbstar.daylog.app.repository.LoginRepository
 import okhttp3.ResponseBody
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -38,9 +39,12 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
                 if (json.equals("{\"resMsg\":\"fail\"}")) {
                     loginLiveData.postValue("error")
                 } else {
+                    val nickname = JSONObject(json).getString("nickname")
+                    Log.d("nickname: ", nickname)
                     val editor = myApplication.prefs.edit()
                     editor.putString("member", json)
                     editor.putString("id", member.id)
+                    editor.putString("nickname", nickname)
                     editor.commit()
 
                     loginLiveData.postValue("success")
