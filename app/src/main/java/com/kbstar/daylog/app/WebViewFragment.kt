@@ -64,7 +64,20 @@ class WebViewFragment : Fragment() {
                         binding.webView.visibility = View.VISIBLE
                     }
                 }
+            }
 
+            webViewClient = object : WebViewClient(){
+                override fun shouldOverrideUrlLoading(
+                    view: WebView?,
+                    url: String?
+                ): Boolean {
+                        if(url?.indexOf("tel:")!! > -1){
+                            startActivity(Intent(Intent.ACTION_DIAL, Uri.parse(url)))
+                            return true;
+                        }else{
+                            return false;
+                        }
+                }
             }
         }
 
