@@ -10,7 +10,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class JoinViewModel(application: Application): AndroidViewModel(application) {
+class JoinViewModel(application: Application) : AndroidViewModel(application) {
     val myApplication: MyApplication
     var user: Member
 
@@ -22,16 +22,16 @@ class JoinViewModel(application: Application): AndroidViewModel(application) {
     // livedata 선언
     val joinLiveData = MutableLiveData<String>()
 
-    fun register(member: Member?){
+    fun register(member: Member?) {
         val repository = JoinRepository()
 
-        repository.register(myApplication, member, object: Callback<Member>{
+        repository.register(myApplication, member, object : Callback<Member> {
             override fun onResponse(call: Call<Member>, response: Response<Member>) {
                 val json = response.body()?.toString()
 
                 if (json.equals("{\"resMsg\":\"fail\"}")) {
                     joinLiveData.postValue("error")
-                }else{
+                } else {
                     joinLiveData.postValue("success")
                 }
 

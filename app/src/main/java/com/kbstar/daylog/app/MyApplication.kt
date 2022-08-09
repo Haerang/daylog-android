@@ -57,44 +57,44 @@ private fun getUnsafeOkHttpClient(): OkHttpClient.Builder {
     return builder
 }
 
-class MyApplication:Application() {
+class MyApplication : Application() {
 
     val member = Member()
     val msgRes = MsgRes()
     val place = Place()
     var memberAPI: MemberAPI
-    var placeAPI : PlaceAPI
+    var placeAPI: PlaceAPI
 
     lateinit var prefs: SharedPreferences
 
     val authInterceptor = object : Interceptor {
         override fun intercept(chain: Interceptor.Chain): Response {
             val user = prefs.getString("member", "") ?: ""
-            if(user.isNotEmpty()){
+            if (user.isNotEmpty()) {
                 val gson = Gson()
                 Log.d("kkang", "member json:$user")
                 val memberObj = gson.fromJson<Member>(user, Member::class.java)
                 val token = memberObj.token
 
-                if(token.isEmpty()){
+                if (token.isEmpty()) {
                     return chain.proceed(chain.request())
-                }else {
+                } else {
 
                     Log.d("daylog", "token:$token:")
 
                     Log.d("daylog", "${chain.request().url.toString()}")
 
                     val url = chain.request().url.toString()
-                    if(url.contains("login") || url.contains("register") || url.contains("idCheck")){
+                    if (url.contains("login") || url.contains("register") || url.contains("idCheck")) {
                         return chain.proceed(chain.request())
-                    }else {
+                    } else {
                         val request = chain.request().newBuilder()
                             .addHeader("Authorization", "$token")
                             .build()
                         return chain.proceed(request)
                     }
                 }
-            }else {
+            } else {
                 return chain.proceed(chain.request())
             }
 
@@ -103,7 +103,7 @@ class MyApplication:Application() {
 
 
     val retrofit: Retrofit
-        get(){
+        get() {
             val interceptor = HttpLoggingInterceptor()
             interceptor.level = HttpLoggingInterceptor.Level.BODY
 
@@ -124,7 +124,7 @@ class MyApplication:Application() {
                 .build()
         }
 
-    init{
+    init {
         memberAPI = retrofit.create(MemberAPI::class.java)
         placeAPI = retrofit.create(PlaceAPI::class.java)
 

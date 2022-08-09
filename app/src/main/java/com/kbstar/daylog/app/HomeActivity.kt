@@ -45,7 +45,7 @@ class HomeActivity : AppCompatActivity() {
         transaction.addToBackStack(null)
 
         //tablayout 유저 이벤트...
-        binding.tabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
+        binding.tabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 Log.d("kkang", "index:${tab?.position}")
                 val transaction: FragmentTransaction = fragmentManager.beginTransaction()
@@ -63,38 +63,38 @@ class HomeActivity : AppCompatActivity() {
             }
         })
 
-        tabItemSelectChangeLiveData.observe(this){
+        tabItemSelectChangeLiveData.observe(this) {
             binding.tabs.getTabAt(it)?.select()
         }
 
-        regionChangeLiveData.observe(this){
+        regionChangeLiveData.observe(this) {
             openFragmentOnRegionFragment(it)
         }
 
-        placeIdxChangeLiveData.observe(this){
+        placeIdxChangeLiveData.observe(this) {
             openPlaceWebViewFragment(it)
         }
 
-        favoriteIdxChangeLiveData.observe(this){
+        favoriteIdxChangeLiveData.observe(this) {
             openPlaceWebViewFragment(it)
         }
     }
 
-    fun openFragmentOnRegionFragment(region: String){
+    fun openFragmentOnRegionFragment(region: String) {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.container, CategoryFragment(region))
         transaction.commit()
         transaction.addToBackStack(null)
     }
 
-    fun openPlaceWebViewFragment(placeIdx: String){
+    fun openPlaceWebViewFragment(placeIdx: String) {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.container, PlaceWebViewFragment(placeIdx))
         transaction.commit()
         transaction.addToBackStack(null)
     }
 
-    fun openProfileFragment(memberId: String){
+    fun openProfileFragment(memberId: String) {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.container, ProfileFragment(memberId))
         transaction.commit()

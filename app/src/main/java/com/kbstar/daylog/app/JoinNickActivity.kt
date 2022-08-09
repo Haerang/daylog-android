@@ -28,19 +28,19 @@ class JoinNickActivity : AppCompatActivity() {
         }
 
         binding.joinBtn.setOnClickListener {
-            if(!nickname.isNullOrBlank()){
+            if (!nickname.isNullOrBlank()) {
                 member?.nickname = nickname
                 // 멤버 객체 확인
                 Log.d("register", member.toString());
-                    viewmodel.register(member)
+                viewmodel.register(member)
             }
         }
 
-        viewmodel.joinLiveData.observe(this){
-            if(it == "success"){
+        viewmodel.joinLiveData.observe(this) {
+            if (it == "success") {
                 startActivity(Intent(applicationContext, MainActivity::class.java))
                 Toast.makeText(applicationContext, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show()
-            }else {
+            } else {
                 Toast.makeText(applicationContext, "회원가입에 실패하였습니다.", Toast.LENGTH_SHORT).show()
             }
         }

@@ -1,17 +1,16 @@
 package com.kbstar.daylog.app.repository
 
 import com.kbstar.daylog.app.MyApplication
-import com.kbstar.daylog.app.model.Member
 import com.kbstar.daylog.app.model.Place
 import retrofit2.Callback
 
-class ProfileRepository {
-    fun getFavorites(
+class PlaceRepository {
+    fun selectByRegion(
         application: MyApplication,
-        member: Member,
+        place: Place?,
         callback: Callback<MutableList<Place>>
     ) {
         val placeAPI = application.placeAPI
-        placeAPI.selectSavedPlace(member).enqueue(callback)
+        placeAPI.selectByRegion(place).enqueue(callback)
     }
 }

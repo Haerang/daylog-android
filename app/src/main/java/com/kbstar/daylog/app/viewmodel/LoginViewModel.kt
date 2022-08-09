@@ -12,7 +12,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class LoginViewModel(application: Application): AndroidViewModel(application){
+class LoginViewModel(application: Application) : AndroidViewModel(application) {
 
     val myApplication: MyApplication
 
@@ -24,10 +24,10 @@ class LoginViewModel(application: Application): AndroidViewModel(application){
 
     val loginLiveData = MutableLiveData<String>()
 
-    fun login(member: Member){
+    fun login(member: Member) {
         val repository = LoginRepository()
 
-        repository.login(myApplication, member, object : Callback<ResponseBody>{
+        repository.login(myApplication, member, object : Callback<ResponseBody> {
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                 val json = response.body()?.string()!!
 

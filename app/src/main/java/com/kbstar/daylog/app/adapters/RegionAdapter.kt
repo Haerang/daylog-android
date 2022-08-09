@@ -15,7 +15,7 @@ class RegionViewHolder(val binding: RegionItemBinding) : RecyclerView.ViewHolder
 
 val regionChangeLiveData: MutableLiveData<String> = MutableLiveData()
 
-class RegionAdapter(val context: Context?): RecyclerView.Adapter<RegionViewHolder>() {
+class RegionAdapter(val context: Context?) : RecyclerView.Adapter<RegionViewHolder>() {
     val regions = arrayOf("서울", "경기", "강원", "충청", "전라", "경상", "부산", "제주", "전체")
 
     @SuppressLint("UseCompatLoadingForDrawables")
@@ -32,7 +32,13 @@ class RegionAdapter(val context: Context?): RecyclerView.Adapter<RegionViewHolde
     )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RegionViewHolder =
-        RegionViewHolder(RegionItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        RegionViewHolder(
+            RegionItemBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
 
     override fun onBindViewHolder(holder: RegionViewHolder, position: Int) {
         Log.d("kbstar.com", "onBindViewHolder : $position")
@@ -40,7 +46,7 @@ class RegionAdapter(val context: Context?): RecyclerView.Adapter<RegionViewHolde
         binding.regionText.text = regions[position]
         binding.regionThumbnail.setImageDrawable(regionDrawables[position])
 
-        binding.itemRoot.setOnClickListener{
+        binding.itemRoot.setOnClickListener {
             Log.d("kbstar.com", "region Root Click: $position")
             regionChangeLiveData.postValue(regions[position])
         }

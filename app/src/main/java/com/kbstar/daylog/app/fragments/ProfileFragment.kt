@@ -34,10 +34,10 @@ class ProfileFragment(val id: String) : Fragment() {
         var pref = (activity as HomeActivity).pref
         setHasOptionsMenu(true)
 
-        if(!pref.getString("profileImg","").equals("")){
+        if (!pref.getString("profileImg", "").equals("")) {
             context?.let {
                 Glide.with(it)
-                    .load(pref.getString("profileImg",""))
+                    .load(pref.getString("profileImg", ""))
                     .into(binding.profileThumbnail)
             }
         }
@@ -55,11 +55,11 @@ class ProfileFragment(val id: String) : Fragment() {
 
         viewmodel.getFavorites(member, placeList)
 
-        viewmodel.favoriteLiveData.observe(viewLifecycleOwner){
-            if(it.size > 0){
+        viewmodel.favoriteLiveData.observe(viewLifecycleOwner) {
+            if (it.size > 0) {
                 placeList.addAll(it)
                 favoriteAdapter.notifyDataSetChanged()
-            }else {
+            } else {
 
             }
         }

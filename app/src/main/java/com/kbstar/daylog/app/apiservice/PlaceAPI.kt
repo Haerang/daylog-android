@@ -8,7 +8,7 @@ import retrofit2.http.POST
 
 interface PlaceAPI {
     @POST("place/region")
-    fun selectByRegion(@Body place: Place): Call<MutableList<Place>>
+    fun selectByRegion(@Body place: Place?): Call<MutableList<Place>>
 
     @POST("place/favorite")
     fun selectSavedPlace(@Body member: Member): Call<MutableList<Place>>

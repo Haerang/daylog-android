@@ -22,7 +22,7 @@ class JoinPwdActivity : AppCompatActivity() {
 
         binding.joinPwdInput.doAfterTextChanged {
             binding.joinPwdDebug.setText("")
-            if(it?.matches(pwdReg)==false){
+            if (it?.matches(pwdReg) == false) {
                 binding.joinPwdDebug.setText("영문 대소문자, 숫자 8~15자리로 입력해주세요.")
             }
             pwd = it.toString()
@@ -30,24 +30,24 @@ class JoinPwdActivity : AppCompatActivity() {
 
         binding.joinPwdCheckInput.doAfterTextChanged {
 
-            if(!it.toString().equals(pwd)){
+            if (!it.toString().equals(pwd)) {
                 binding.joinPwdCheckDebug.setText("동일한 비밀번호를 입력해주세요")
-            }else {
+            } else {
                 binding.joinPwdCheckDebug.setText("")
                 pwdCheck = it.toString()
             }
         }
 
         binding.goNicknameBtn.setOnClickListener {
-            if(pwd.isNullOrBlank()){
+            if (pwd.isNullOrBlank()) {
                 binding.joinPwdDebug.setText("비밀번호를 입력해주세요")
             }
 
-            if(pwdCheck.isNullOrBlank()){
+            if (pwdCheck.isNullOrBlank()) {
                 binding.joinPwdCheckDebug.setText("동일한 비밀번호를 입력해주세요")
             }
 
-            if(!pwd.isNullOrBlank() && !pwdCheck.isNullOrBlank() && pwd.equals(pwdCheck)){
+            if (!pwd.isNullOrBlank() && !pwdCheck.isNullOrBlank() && pwd.equals(pwdCheck)) {
                 member?.password = pwd
                 val intent = Intent(this, JoinNickActivity::class.java)
                 intent.putExtra("member", member)

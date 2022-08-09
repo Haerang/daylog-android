@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class Place (
+data class Place(
     var placeIdx: Int = 0,
     var placeName: String = "",
     var category: String = "",

@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
 
         val token = (applicationContext as MyApplication).prefs.getString("member", "") ?: ""
 
-        if(token.isEmpty()){
+        if (token.isEmpty()) {
             val binding = ActivityMainBinding.inflate(layoutInflater)
             setContentView(binding.root)
 
@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
             binding.loginKakaoBtn.setOnClickListener {
                 startActivity(Intent(this, KakaoHandlerActivity::class.java))
             }
-        }else {
+        } else {
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }

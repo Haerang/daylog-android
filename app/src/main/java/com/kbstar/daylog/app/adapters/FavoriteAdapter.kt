@@ -12,11 +12,18 @@ import com.kbstar.daylog.app.model.Place
 
 class FavoriteViewHolder(val binding: FavoriteItemBinding) : RecyclerView.ViewHolder(binding.root)
 
-val favoriteIdxChangeLiveData : MutableLiveData<String> = MutableLiveData()
+val favoriteIdxChangeLiveData: MutableLiveData<String> = MutableLiveData()
 
-class FavoriteAdapter(val context: Context?, val datas: MutableList<Place>): RecyclerView.Adapter<FavoriteViewHolder>() {
+class FavoriteAdapter(val context: Context?, val datas: MutableList<Place>) :
+    RecyclerView.Adapter<FavoriteViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteViewHolder =
-        FavoriteViewHolder(FavoriteItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        FavoriteViewHolder(
+            FavoriteItemBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
 
     override fun onBindViewHolder(holder: FavoriteViewHolder, position: Int) {
         Log.d("favoriteAdapter datas: ", datas.toString())
@@ -27,7 +34,7 @@ class FavoriteAdapter(val context: Context?, val datas: MutableList<Place>): Rec
             .load("http://10.10.223.31:8080/assets/images/place/${datas[position].placeThumbnailPath}")
             .into(holder.binding.favoritePlaceImage)
 
-        holder.binding.root.setOnClickListener{
+        holder.binding.root.setOnClickListener {
             Log.d("categoryAdapter", "datas[postion]: ${datas[position].placeIdx}")
             favoriteIdxChangeLiveData.postValue(datas[position].placeIdx.toString())
         }

@@ -5,7 +5,7 @@ import kotlinx.parcelize.Parcelize
 
 
 @Parcelize
-data class Member (
+data class Member(
     var id: String = "",
     var password: String = "",
     var nickname: String = "",

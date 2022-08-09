@@ -12,11 +12,18 @@ import com.kbstar.daylog.app.model.Place
 
 class CategoryViewHolder(val binding: PlaceItemBinding) : RecyclerView.ViewHolder(binding.root)
 
-val placeIdxChangeLiveData : MutableLiveData<String> = MutableLiveData()
+val placeIdxChangeLiveData: MutableLiveData<String> = MutableLiveData()
 
-class CategoryAdapter(val context: Context?, val datas: MutableList<Place>): RecyclerView.Adapter<CategoryViewHolder>() {
+class CategoryAdapter(val context: Context?, val datas: MutableList<Place>) :
+    RecyclerView.Adapter<CategoryViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder =
-        CategoryViewHolder(PlaceItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        CategoryViewHolder(
+            PlaceItemBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
 
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
         holder.binding.placeNameTextview.text = datas[position].placeName
@@ -26,7 +33,7 @@ class CategoryAdapter(val context: Context?, val datas: MutableList<Place>): Rec
             .load("http://10.10.223.31:8080/assets/images/place/${datas[position].placeThumbnailPath}")
             .into(holder.binding.categoryPlaceImage)
 
-        holder.binding.root.setOnClickListener{
+        holder.binding.root.setOnClickListener {
             Log.d("categoryAdapter", "datas[postion]: ${datas[position].placeIdx}")
             placeIdxChangeLiveData.postValue(datas[position].placeIdx.toString())
         }

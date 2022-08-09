@@ -18,7 +18,7 @@ import java.net.URISyntaxException
 
 class PlaceWebViewFragment(val placeIdx: String) : Fragment() {
 
-    lateinit var binding : FragmentPlaceWebViewBinding
+    lateinit var binding: FragmentPlaceWebViewBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,11 +27,11 @@ class PlaceWebViewFragment(val placeIdx: String) : Fragment() {
         binding = FragmentPlaceWebViewBinding.inflate(inflater, container, false)
         val pref = (activity as HomeActivity).pref
 
-        class MemberData{
+        class MemberData {
             @get:JavascriptInterface
             val member: String?
-                get(){
-                    val member: String? = pref.getString("member","")
+                get() {
+                    val member: String? = pref.getString("member", "")
                     if (member != null) {
                         Log.d("javascript", member)
                     }
@@ -41,7 +41,7 @@ class PlaceWebViewFragment(val placeIdx: String) : Fragment() {
 
         Glide.with(this)
             .load(R.drawable.loading_images)
-            .override(200,200)
+            .override(200, 200)
             .into(binding.webLoadingImageView)
 
         setHasOptionsMenu(true)
@@ -54,7 +54,7 @@ class PlaceWebViewFragment(val placeIdx: String) : Fragment() {
 
         val placeWebView = binding.placeWebView
 
-        placeWebView.apply{
+        placeWebView.apply {
             webViewClient = WebViewClient()
             settings.javaScriptEnabled = true
             settings.setSupportZoom(true) // 화면 확대 허용
@@ -62,28 +62,29 @@ class PlaceWebViewFragment(val placeIdx: String) : Fragment() {
             settings.useWideViewPort = true
             settings.layoutAlgorithm = WebSettings.LayoutAlgorithm.SINGLE_COLUMN // 컨텐츠 사이즈 맞추기
 
-            webChromeClient = object : WebChromeClient(){
+            webChromeClient = object : WebChromeClient() {
                 override fun onProgressChanged(view: WebView?, newProgress: Int) {
-                    if(newProgress >= 100){
+                    if (newProgress >= 100) {
                         binding.webLoadingImageView.visibility = View.GONE
                         binding.placeWebView.visibility = View.VISIBLE
                     }
                 }
             }
 
-            webViewClient = object : WebViewClient(){
+            webViewClient = object : WebViewClient() {
                 override fun shouldOverrideUrlLoading(
                     view: WebView?,
                     url: String?
                 ): Boolean {
-                    if(url?.indexOf("tel:")!! > -1){
+                    if (url?.indexOf("tel:")!! > -1) {
                         startActivity(Intent(Intent.ACTION_DIAL, Uri.parse(url)))
                         return true;
-                    }else if (url != null && url.startsWith("intent://")) {
+                    } else if (url != null && url.startsWith("intent://")) {
                         try {
                             val intent = Intent.parseUri(url, Intent.URI_INTENT_SCHEME)
                             val existPackage =
-                                context.getPackageManager().getLaunchIntentForPackage(intent.getPackage()!!)
+                                context.getPackageManager()
+                                    .getLaunchIntentForPackage(intent.getPackage()!!)
                             if (existPackage != null) {
                                 startActivity(intent)
                             } else {
@@ -106,7 +107,7 @@ class PlaceWebViewFragment(val placeIdx: String) : Fragment() {
                         } catch (e: URISyntaxException) {
                             e.printStackTrace()
                         }
-                    } else{
+                    } else {
                         return false;
                     }
                     return true;
@@ -121,15 +122,17 @@ class PlaceWebViewFragment(val placeIdx: String) : Fragment() {
         }
 
         // 웹뷰 뒤로가기 처리
-        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                if (placeWebView.canGoBack()) {
-                    placeWebView.goBack()
-                } else {
-                    activity?.supportFragmentManager?.popBackStack()
+        activity?.onBackPressedDispatcher?.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    if (placeWebView.canGoBack()) {
+                        placeWebView.goBack()
+                    } else {
+                        activity?.supportFragmentManager?.popBackStack()
+                    }
                 }
-            }
-        })
+            })
 
         return binding.root
     }
