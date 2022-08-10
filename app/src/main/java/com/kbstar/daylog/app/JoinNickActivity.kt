@@ -37,11 +37,11 @@ class JoinNickActivity : AppCompatActivity() {
         }
 
         viewmodel.joinLiveData.observe(this) {
-            if (it == "success") {
+            if (it == "error") {
+                Toast.makeText(applicationContext, "회원가입에 실패하였습니다.", Toast.LENGTH_SHORT).show()
+            } else {
                 startActivity(Intent(applicationContext, MainActivity::class.java))
                 Toast.makeText(applicationContext, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(applicationContext, "회원가입에 실패하였습니다.", Toast.LENGTH_SHORT).show()
             }
         }
     }

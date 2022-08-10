@@ -35,6 +35,7 @@ class LoginActivity : AppCompatActivity() {
 
         val idReg =
             Regex("^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}\$")
+        val pwdReg = Regex("[!@#\$_%^&+=-]")
         var member = (applicationContext as MyApplication).member
 
         binding.idInput.doAfterTextChanged {
@@ -62,14 +63,18 @@ class LoginActivity : AppCompatActivity() {
                 binding.pwDebug.setText("비밀번호를 입력해주세요")
             }
 
+            if (password.matches(pwdReg)){
+                binding.pwDebug.setText("비밀번호 특수문자")
+            }
+
             if (!id.isNullOrBlank() && !password.isNullOrBlank()) {
                 // user 객체 만들어서 server로 보내기
                 // Toast.makeText(this, "로그인 버튼 눌림", Toast.LENGTH_SHORT).show()
 
-                member.id = id
-                member.password = password
+                    member.id = id
+                    member.password = password
 
-                viewmodel.login(member)
+                    viewmodel.login(member)
             }
         }
 
@@ -80,7 +85,6 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(applicationContext, "아이디와 비밀번호를 확인해주세요", Toast.LENGTH_SHORT).show()
             }
         }
-
 
     }
 }

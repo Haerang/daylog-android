@@ -40,7 +40,7 @@
             android:layout_height="62sp"
             android:layout_marginBottom="5sp"
             android:background="@drawable/input_bg"
-            android:hint="영문 대소문자, 숫자, 특수문자 8~15자리"
+            android:hint="영문 대소문자, 숫자 8~15자리"
             android:inputType="textPassword"
             android:paddingLeft="10sp"
             android:textColorHint="@color/gray_50"

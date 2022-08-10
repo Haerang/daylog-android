@@ -57,6 +57,7 @@ class CategoryFragment(val region: String) : Fragment() {
 
         viewmodel.regionPlaceLiveData.observe(viewLifecycleOwner) {
             if (it.size > 0) {
+                placeList.clear()
                 placeList.addAll(it)
                 categoryAdapter.notifyDataSetChanged()
                 totalList.addAll(placeList)

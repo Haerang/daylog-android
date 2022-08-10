@@ -1,6 +1,7 @@
 package com.kbstar.daylog.app.viewmodel
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.kbstar.daylog.app.MyApplication
@@ -27,13 +28,14 @@ class JoinViewModel(application: Application) : AndroidViewModel(application) {
 
         repository.register(myApplication, member, object : Callback<Member> {
             override fun onResponse(call: Call<Member>, response: Response<Member>) {
-                val json = response.body()?.toString()
+                val json = response.body()?.toString()!!
+                Log.d("register json: ", json)
 
                 if (json.equals("{\"resMsg\":\"fail\"}")) {
                     joinLiveData.postValue("error")
-                } else {
-                    joinLiveData.postValue("success")
                 }
+
+                joinLiveData.postValue("success")
 
             }
 

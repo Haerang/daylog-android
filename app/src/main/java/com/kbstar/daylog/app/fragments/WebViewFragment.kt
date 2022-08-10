@@ -23,27 +23,37 @@ class WebViewFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
+        binding = FragmentWebViewBinding.inflate(inflater, container, false)
         val pref = (activity as HomeActivity).pref
 
         class MemberData {
             @get:JavascriptInterface
             val member: String?
                 get() {
-                    val member: String? = pref.getString("nickname", "")
+                    val member: String? = pref.getString("member", "")
                     if (member != null) {
-                        Log.d("javascript", member)
+                        Log.d("javascript member: ", member)
                     }
                     return member
                 }
-        }
 
-        binding = FragmentWebViewBinding.inflate(inflater, container, false)
+            @get:JavascriptInterface
+            val nickname: String?
+                get(){
+                    val nickname: String? = pref.getString("nickname", "")
+                    if(member != null){
+                        Log.d("javascript", nickname!!)
+                    }
+                    return nickname
+                }
+        }
 
         Glide.with(this)
             .load(R.drawable.loading_images)
             .override(200, 200)
             .into(binding.webLoadingImageView)
+
+        setHasOptionsMenu(true)
 
         val webView = binding.webView
 

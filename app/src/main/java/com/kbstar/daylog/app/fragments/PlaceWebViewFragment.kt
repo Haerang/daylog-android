@@ -56,6 +56,7 @@ class PlaceWebViewFragment(val placeIdx: String) : Fragment() {
 
         placeWebView.apply {
             webViewClient = WebViewClient()
+            settings.setDomStorageEnabled(true)
             settings.javaScriptEnabled = true
             settings.setSupportZoom(true) // 화면 확대 허용
             settings.loadWithOverviewMode = true // html 컨텐츠가 웹뷰보다 더 클 경우 스크린에 맞게 크기 조정

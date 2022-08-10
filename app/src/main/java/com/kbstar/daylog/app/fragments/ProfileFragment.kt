@@ -49,6 +49,8 @@ class ProfileFragment(val id: String) : Fragment() {
 
         Log.d("profileFragmentMember", member.toString())
 
+        binding.profileTextview.text = pref.getString("nickname", "") + "님이 좋아하는 공간이에요"
+
         val placeList = mutableListOf<Place>()
         favoriteAdapter = FavoriteAdapter(activity?.applicationContext, placeList)
         binding.favoriteRecyclerview.adapter = favoriteAdapter

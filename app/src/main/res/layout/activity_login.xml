@@ -45,7 +45,6 @@
             android:imeOptions="actionDone"
             android:paddingLeft="27sp"
             android:singleLine="true"
-            android:text="tester@kbfg.com"
             android:textColorHint="@color/gray_50"
             android:textSize="18sp" />
 
@@ -69,7 +68,6 @@
             android:inputType="textPassword"
             android:paddingLeft="27sp"
             android:singleLine="true"
-            android:text="tester12345"
             android:textColorHint="@color/gray_50"
             android:textSize="18sp" />
 
